@@ -1,0 +1,28 @@
+.footer{
+    background-color: rgb(0, 0, 153);
+    align-items: center;
+    color: white;
+    margin: auto;
+}
+a{
+    color: white;
+}
+.extras{
+    display: flex;
+    align-items: center;
+    min-height: 25rem;
+    justify-content: space-around;
+}
+.elements{
+    margin: 0;
+    line-height: 2.5rem;
+}
+.topics{
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+.Copyright{
+    text-align: center;
+    margin-bottom: 0;
+}

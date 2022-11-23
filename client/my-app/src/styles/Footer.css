@@ -1,9 +1,0 @@
-.footer{
-    background-color: rgb(0, 0, 153);
-    max-height: 40rem;
-    align-items: center;
-}
-.extras{
-    display: flex;
-    justify-content: space-around;
-}
