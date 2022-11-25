@@ -1,25 +1,19 @@
-import React from "react";
-//page elements
-import Banner from "./Home/pages_elements/Banner";
-import Intro from "./Home/pages_elements/Intro";
-import Services from "./Home/pages_elements/Services";
-import Footer from "./Home/pages_elements/Footer";
-import Team from "./Home/pages_elements/Team";
+// import logo from './logo.svg';
+import './App.css';
+import App1 from './App1';
+import PageContent from './components/PageContent';
+// import SideBar from './components/SideBar';
+import React from 'react'
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-
-
-function App() {
+export default function App() {
   return (
     <>
-        <Banner />
-        <Intro />
-        <Services />
-        <Team />
-        <Footer />
+  <App1/>
+        </>
+    
 
-        
-    </>
+    
+    
   );
 }
-
-export default App;
