@@ -1,0 +1,38 @@
+.item,
+.icon,
+.type,.description {
+    margin: 0;
+    text-align: center;
+}
+
+.services{
+    min-height: 30rem;
+    text-align: center;
+    padding: 3rem;
+    background-color: rgba(0, 0, 0, 0.082);
+}
+.item{
+    display: flex;
+    justify-content: 
+    space-around;
+}
+.icon{
+    color: rgb(4, 0, 255);
+    font-size: 4rem;
+    margin: 2rem;
+}
+.services_title{
+    font-size: 2rem;
+    padding:1rem;
+    margin:auto;
+}
+.type{
+    font-size: 1.5rem;
+    color: black;
+    margin: 1rem auto;
+}
+.Service{
+    margin: 1rem;
+    padding: 1rem;
+    width: 33.33%;
+}
