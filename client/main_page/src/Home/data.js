@@ -4,7 +4,7 @@ import { FaChartBar, FaHubspot, FaCalendarCheck } from "react-icons/fa";
 export const links = [
   {
     id: 1,
-    url: "/",
+    url: "",
     text: "home",
   },
   {
@@ -17,16 +17,14 @@ export const links = [
     url: "/events",
     text: "events",
   },
+ 
+
   {
     id: 4,
-    url: "/reservations",
-    text: "reservations",
-  },
-  {
-    id: 5,
     url: "/contact",
     text: "contact",
   },
+ 
 ];
 const team = [
   {

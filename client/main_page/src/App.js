@@ -1,15 +1,32 @@
 // import logo from './logo.svg';
 import './App.css';
-import App1 from './App1';
-import PageContent from './components/PageContent';
-// import SideBar from './components/SideBar';
+
 import React from 'react'
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import MainPage from './MainPage';
+import PostState from "./context/post/PostState";
+import PageContent from './components/PageContent';
+import Login from './components/Login';
 
 export default function App() {
   return (
     <>
-  <App1/>
+   
+
+   <PostState>
+    <Router>
+    <Routes>
+    <Route path='*' element={<MainPage/>}/>
+    <Route path='/login' element={<Login/>}/>
+    <Route path='/admin/*' element={<PageContent/>}/>
+    </Routes>
+    </Router>
+    </PostState>
+   
         </>
     
 

@@ -1,30 +1,37 @@
-import React from 'react'
+import React, { useContext } from "react";
+import postContext from "../context/post/postContext";
 
-export default function ServiceTable() {
+export default function ServiceTable(props) {
+  const context = useContext(postContext);
+  const { deleteService } = context;
+
+  const { service } = props;
   return (
-<div className="row my-5">
-    <h3 className="fs-4 mb-3">Recent Services</h3>
-    <div className="col">
-        <table className="table bg-dark rounded shadow-sm  table-hover">
-        <thead>
-    <tr className='text-white'>
-        <th scope="col" width="50">S.N.</th>
-        <th scope="col">Title</th>
-        <th scope="col">Descriptions</th>
-        <th scope="col">Date</th>
-    </tr>
-</thead>
-<tbody>
-                            <tr className='text-white'>
-                                    <th scope="row">1</th>
-                                    <td>Admission Procedure</td>
-                                    <td>You can get the details about admission procedure. Just contact us.</td>
-                                    <td>3-8</td>
+    <div className="container">
+      <div className="card my-3">
+        <div className="card-body">
+          <div className="d-flex align-items-center">
+            <b>
+              <h3 className="card-title">{service.title}</h3>
+            </b>
 
-                                </tr>
-                                </tbody>
-</table>
+            <i
+              className="fa fa-solid fa-trash mx-2"
+              onClick={() => {
+                deleteService(service._id);
+              }}
+            ></i>
+            <i className="far fa-edit mx-2"></i>
+          </div>
+          <p className="card-text">{service.description}</p>
+          <p className="card-text">
+            Starting From: {new Date(service.starting_date).toGMTString()}
+          </p>
+          <p className="card-text">
+            Ending Date: {new Date(service.ending_date).toGMTString()}
+          </p>
+        </div>
+      </div>
     </div>
-</div>
-  )
+  );
 }

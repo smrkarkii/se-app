@@ -1,31 +1,38 @@
-import React from 'react'
+import React, { useContext } from "react";
+import postContext from "../context/post/postContext";
 
-export default function ContactTable() {
+export default function ContactTable(props) {
+  const context = useContext(postContext);
+  const { deleteContact } = context;
+
+  const { contact } = props;
   return (
-    <div className="row my-5">
-    <h3 className="fs-4 mb-3">Contact List</h3>
-    <div className="col">
-        <table className="table bg-dark rounded shadow-sm  table-hover">
-        <thead>
-    <tr className='text-white'>
-        <th scope="col" width="50">S.N.</th>
-        <th scope="col">Name</th>
-    <th scope="col">Email</th>
-        <th scope="col">Descriptions</th>
-        
-    </tr>
-</thead>
-<tbody>
-                            <tr className='text-white'>
-                                    <th scope="row">1</th>
-                                    <td>Raju Yadav</td>
-                                    <td>raju@gmail.com</td>
-                                    <td>I want to get admitted in IOE and need help.</td>
+    <div className="container">
+      <div className="card my-3">
+        <div className="card-body">
+          <div className="d-flex align-items-center">
+            <b>
+              <h3 className="card-title">{contact.name}</h3>
+            </b>
 
-                                </tr>
-                                </tbody>
-</table>
+            <i
+              className="fa fa-solid fa-trash mx-2"
+              onClick={() => {
+                deleteContact(contact._id);
+              }}
+            ></i>
+            <i className="far fa-edit mx-2"></i>
+          </div>
+          <h5 className="card-title">Email: {contact.email}</h5>
+
+          <p className="card-text">{contact.description}</p>
+          <p className="card-text">
+            <small className="text-muted">
+              {new Date(contact.date).toGMTString()}
+            </small>
+          </p>
+        </div>
+      </div>
     </div>
-</div>
-  )
+  );
 }
