@@ -94,14 +94,14 @@ export default function PageContent() {
                 <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                   <li className="nav-item ">
                     <a
-                      className="nav-link  second-text fw-bold"
+                      className="nav-link text-white  second-text fw-bold"
                       href="/"
                       id="navbarDropdown"
                       role="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      <i className="fas fa-user me-2"></i>Admin
+                      <i className="fas fa-user me-2 text-white"></i>Admin
                     </a>
                    
                   </li>

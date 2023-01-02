@@ -2,10 +2,9 @@ import React, { useState, useRef, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
 import { links } from "../data";
 import logo from "../images/logo.png";
-import { Link} from "react-router-dom";
 
 import "../styles/Navbar.css";
- 
+
 const Navbar = () => {
   const [showLinks, setShowLinks] = useState(false);
   const linksContainerRef = useRef(null);
@@ -36,7 +35,7 @@ const Navbar = () => {
               const { id, url, text } = link;
               return (
                 <li key={id}>
-                  <Link to={url}>{text}</Link>
+                  <a href={url}>{text}</a>
                 </li>
               );
             })}

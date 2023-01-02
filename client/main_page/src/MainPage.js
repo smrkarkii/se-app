@@ -5,7 +5,7 @@ import Navbar from "./Home/pages_elements/Navbar";
 
 //Routes
 import Gallery from "./Pages/Gallery";
-import Events from "./Pages/Events";
+import Events from "./Pages/Events.js";
 import Reservations from "./Pages/Reservations";
 import Contact from "./Pages/contact";
 import Home from "./Pages/Home";

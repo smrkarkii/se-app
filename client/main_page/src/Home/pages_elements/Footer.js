@@ -1,132 +1,86 @@
-import logo from "../images/logo.png";
+import "../styles/Footer.css";
 
 const Footer = () => {
   return (
     <>
+      <footer className="nb-footer">\
+	  
+<div className="container">
+<div className="row">
+<div className="col-sm-12">
+<div className="about">
+  <img src="images/logo.png" className="img-responsive center-block" alt=""/>
+  <p>Bootstrap Footer example snippets with CSS, Javascript and HTML. Code example of bootstrap-3 footer using HTML, Javascript, jQuery, and CSS. 5 Beautiful and Responsive Footer Templates. Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS.</p>
 
-<footer style={{backgroundColor: "rgb(0, 2, 141)"}} className="text-center text-lg-start text-muted">
-  {/* <!-- Section: Social media --> */}
-  <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-    {/* <!-- Left --> */}
-    <div className="me-5 d-none d-lg-block text-white">
-      <span>Get connected with us on social networks:</span>
-    </div>
-    {/* <!-- Left -->
-
-    <!-- Right --> */}
-    <div>
-      <a href="/" className="me-4 link-secondary">
-        <i className="fab fa-facebook-f"></i>
-      </a>
-      <a href="/" className="me-4 link-secondary">
-        <i className="fab fa-twitter"></i>
-      </a>
-      <a href="/" className="me-4 link-secondary">
-        <i className="fab fa-google"></i>
-      </a>
-      <a href="/" className="me-4 link-secondary">
-        <i className="fab fa-instagram"></i>
-      </a>
-      <a href="/" className="me-4 link-secondary">
-        <i className="fab fa-linkedin"></i>
-      </a>
-      <a href="/" className="me-4 link-secondary">
-        <i className="fab fa-github"></i>
-      </a>
-    </div>
-    {/* <!-- Right --> */}
-  </section>
-  {/* <!-- Section: Social media --> */}
-
-  {/* <!-- Section: Links  --> */}
-  <section className="text-white">
-    <div className="container text-center text-md-start mt-5">
-      {/* <!-- Grid row --> */}
-      <div className="row mt-3">
-        {/* <!-- Grid column --> */}
-        <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-          {/* <!-- Content --> */}
-          
-		 <center> <img src={logo} className="logo" alt="logo" />
-		 <hr></hr>
-         
-          <h6 className="no css">
-            Here You can get info about every events & services provided by ICTC and can also reserve and contact us. Thank You!
-          </h6></center>
-        </div>
-        {/* <!-- Grid column -->
-
-        <!-- Grid column --> */}
-        <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-          {/* <!-- Links --> */}
-          {/* <h6 className="text-uppercase fw-bold mb-4">
-            Products
-          </h6>
-          <p className="no css">
-            <a href="#!" className="text-reset">Angular</a>
-          </p>
-          <p className="no css">
-            <a href="#!" className="text-reset">React</a>
-          </p>
-          <p className="no css">
-            <a href="#!" className="text-reset">Vue</a>
-          </p>
-          <p className="no css">
-            <a href="#!" className="text-reset">Laravel</a>
-          </p> */}
-        </div>
-        {/* <!-- Grid column -->
-
-        <!-- Grid column --> */}
-        <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-          {/* <!-- Links --> */}
-          {/* <h6 className="text-uppercase fw-bold mb-4">
-            Useful links
-          </h6>
-          <p className="no css">
-            <a href="#!" className="text-reset">Pricing</a>
-          </p>
-          <p className="no css">
-            <a href="#!" className="text-reset">Settings</a>
-          </p>
-          <p className="no css">
-            <a href="#!" className="text-reset">Orders</a>
-          </p>
-          <p className="no css">
-            <a href="#!" className="text-reset">Help</a>
-          </p>*/}
-        </div> 
-        {/* <!-- Grid column -->
-
-        <!-- Grid column --> */}
-        <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-          {/* <!-- Links --> */}
-          <center><h6 className="text-uppercase fw-bold mb-4">Contact</h6>
-          <h6 className="no css"><i className="fas fa-home me-3 text-secondary"></i>Pulchowk, Lalitpur</h6>
-          <h6 className="no css">
-            <i className="fas fa-envelope me-3 text-secondary"></i>
-            ictc@ictc.com
-          </h6>
-          <h6 className="no css"><i className="fas fa-phone me-3 text-secondary"></i> + 977 ..........</h6>
-          <h6 className="no css"><i className="fas fa-print me-3 text-secondary"></i> + 977 ..........</h6>
-		  </center>
-        </div>
-        {/* <!-- Grid column --> */}
-      </div>
-      {/* <!-- Grid row --> */}
-    </div>
-  </section>
-  {/* <!-- Section: Links  -->
-
-  <!-- Copyright --> */}
-  <div className="text-center p-4 text-white" >
-    © 2022 Copyright: ICTC
-   
+  <div className="social-media">
+    <ul className="list-inline">
+      <li><a href="http://www.nextbootstrap.com/" title=""><i className="fa fa-facebook"></i></a></li>
+      <li><a href="http://www.nextbootstrap.com/" title=""><i className="fa fa-twitter"></i></a></li>
+      <li><a href="http://www.nextbootstrap.com/" title=""><i className="fa fa-google-plus"></i></a></li>
+      <li><a href="http://www.nextbootstrap.com/" title=""><i className="fa fa-linkedin"></i></a></li>
+    </ul>
   </div>
-  {/* <!-- Copyright --> */}
-</footer>
-{/* <!-- Footer --> */}
+</div>
+</div>
 
+<div className="col-md-3 col-sm-6">
+<div className="footer-info-single">
+  <h2 className="title">Help Center</h2>
+  <ul className="list-unstyled">
+    <li><a href="http://www.nextbootstrap.com/" title=""><i className="fa fa-angle-double-right"></i> How to Pay</a></li>
+    <li><a href="http://www.nextbootstrap.com/" title=""><i className="fa fa-angle-double-right"></i> FAQ's</a></li>
+    <li><a href="http://www.nextbootstrap.com/" title=""><i className="fa fa-angle-double-right"></i> Sitemap</a></li>
+    <li><a href="http://www.nextbootstrap.com/" title=""><i className="fa fa-angle-double-right"></i> Delivery Info</a></li>
+  </ul>
+</div>
+</div>
+
+<div className="col-md-3 col-sm-6">
+<div className="footer-info-single">
+  <h2 className="title">Customer information</h2>
+  <ul className="list-unstyled">
+    <li><a href="http://www.nextbootstrap.com/" title=""><i className="fa fa-angle-double-right"></i> About Us</a></li>
+    <li><a href="http://www.nextbootstrap.com/" title=""><i className="fa fa-angle-double-right"></i> FAQ's</a></li>
+    <li><a href="http://www.nextbootstrap.com/" title=""><i className="fa fa-angle-double-right"></i> Sell Your Items</a></li>
+    <li><a href="http://www.nextbootstrap.com/" title=""><i className="fa fa-angle-double-right"></i> Contact Us</a></li>
+    <li><a href="http://www.nextbootstrap.com/" title=""><i className="fa fa-angle-double-right"></i> RSS</a></li>
+  </ul>
+</div>
+</div>
+
+<div className="col-md-3 col-sm-6">
+<div className="footer-info-single">
+  <h2 className="title">Security & privacy</h2>
+  <ul className="list-unstyled">
+    <li><a href="http://www.nextbootstrap.com/" title=""><i className="fa fa-angle-double-right"></i> Terms Of Use</a></li>
+    <li><a href="http://www.nextbootstrap.com/" title=""><i className="fa fa-angle-double-right"></i> Privacy Policy</a></li>
+    <li><a href="http://www.nextbootstrap.com/" title=""><i className="fa fa-angle-double-right"></i> Return / Refund Policy</a></li>
+    <li><a href="http://www.nextbootstrap.com/" title=""><i className="fa fa-angle-double-right"></i> Store Locations</a></li>
+  </ul>
+</div>
+</div>
+
+<div className="col-md-3 col-sm-6">
+<div className="footer-info-single">
+  <h2 className="title">Payment</h2>
+  <p>Sample HTML page with Twitter's Bootstrap. Code example of Easy Sticky Footer using HTML, Javascript, jQuery, and CSS. This bootstrap tutorial covers all the major elements of responsive</p>
+  
+</div>
+</div>
+</div>
+</div>
+
+<section className="copyright">
+<div className="container">
+<div className="row">
+<div className="col-sm-6">
+<p>Copyright © 2017. Your Company.</p>
+</div>
+<div className="col-sm-6"></div>
+</div>
+</div>
+</section>
+</footer>
     </>
   );
 };
