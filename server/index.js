@@ -15,7 +15,7 @@ mongoose.connect(process.env.MONGO_DB).then(() => {
 });
 
 app.use("/admin", admin_routes);
-
+app.use("/api/auth", require("./routes/admin"));
 app.use(bodyParser.json());
 
 //routing

@@ -1,62 +1,103 @@
-const AdminJS = require("adminjs");
-const AdminJSExpress = require("@adminjs/express");
-const AdminJSMongoose = require("@adminjs/mongoose");
 const express = require("express");
-const Event = require("../models/Event");
-const Service = require("../models/Service");
+const User = require("../models/User");
+const router = express.Router();
+const { body, validationResult } = require("express-validator");
+const bcrypt = require("bcryptjs");
+var jwt = require("jsonwebtoken");
+const JWT_SECRET = "rajuisagoodb@oy";
 
-const app = express();
-
-//mongoose adapter
-
-AdminJS.registerAdapter({
-  Resource: AdminJSMongoose.Resource,
-  Database: AdminJSMongoose.Database,
-});
-const adminOptions = {
-  // We pass Category to `resources`
-  resources: [
-    Event,
-    {
-      resource: Service,
-      options: {
-        id: "services",
-      },
-    },
+// ROUTE 1: create a user using: POST "/api/auth/createUser". No login Required
+router.post(
+  "/createuser",
+  [
+    body("email", "Enter a valid email").isEmail(),
+    body("name", "Enter a valid name").isLength({ min: 3 }),
+    body("password", "Password must be atleast 5 character").isLength({
+      min: 5,
+    }),
   ],
-};
-const admin = new AdminJS(adminOptions);
-const adminRouter = AdminJSExpress.buildRouter(admin);
+  async (req, res) => {
+    //if there are errors, return bad request and the errors
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    //check whether the user with the same email exist already
+    try {
+      //catch a error
+      let user = await User.findOne({ email: req.body.email });
+      if (user) {
+        return res
+          .status(400)
+          .json({ error: "Sorry a user with this email already exists" });
+      }
+      //Create a new User
+      const salt = await bcrypt.genSalt(10);
+      const secPass = await bcrypt.hash(req.body.password, salt);
 
-module.exports = adminRouter;
+      user = await User.create({
+        email: req.body.email,
+        name: req.body.name,
+        password: secPass,
+      });
+      const data = {
+        user: {
+          id: user.id,
+        },
+      };
+      const authToken = jwt.sign(data, JWT_SECRET);
 
-// const Admin = require("adminjs");
-// const AdminExpress = require("@adminjs/express");
-// const AdminMongoose = require("@adminjs/mongoose");
+      res.json({ authToken });
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).send("Internal Server error occured");
+    }
+  }
+);
 
-// const mongoose = require("mongoose");
+//ROUTER 2: Authenticate a user using: POST "/api/auth/login". No login Required
+router.post(
+  "/login",
+  [
+    body("email", "Enter a valid email").isEmail(),
+    body("password", "Password cannnot be blank").exists(),
+  ],
+  async (req, res) => {
+    //if there are errors, return bad request and the errors
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
 
-// Admin.registerAdapter(AdminMongoose);
-// const express = require("express");
-// const app = express();
+    const { email, password } = req.body;
+    try {
+      let user = await User.findOne({ email });
+      if (!user) {
+        return res
+          .status(400)
+          .json({ error: "Please try to login with correct credentials" });
+      }
+      const passwordCompare = await bcrypt.compare(password, user.password);
+      if (!passwordCompare) {
+        success = false;
+        return res.status(400).json({
+          success,
+          error: "Please try to login with correct credentials",
+        });
+      }
+      const data = {
+        user: {
+          id: user.id,
+        },
+      };
+      const authToken = jwt.sign(data, JWT_SECRET);
+      success = true;
+      res.json({ success, authToken });
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).send("Internal Server error occured");
+    }
+  }
+);
 
-// const admin = new Admin({
-//   databases: [mongoose],
-//   rootPath: "/admin",
-// });
-// const ADMIN = {
-//   email: process.env.ADMIN_EMAIL || "admin@gmail.com",
-//   password: process.env.ADMIN_PASSWORD || "karki",
-// };
-// const router = AdminExpress.buildAuthenticatedRouter(admin, {
-//   cookieName: process.env.ADMIN_COOKIE_NAME || "admin",
-//   cookiePassword: process.env.ADMIN_COOKIE_PASS || "password",
-//   authenticate: async (email, password) => {
-//     if (email === ADMIN.email && password === ADMIN.password) {
-//       return ADMIN;
-//     } else {
-//       return null;
-//     }
-//   },
-// });
-// module.exports = router;
+module.exports = router;
