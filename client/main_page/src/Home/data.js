@@ -17,16 +17,14 @@ export const links = [
     url: "/events",
     text: "events",
   },
+ 
+
   {
     id: 4,
-    url: "/reservations",
-    text: "reservations",
-  },
-  {
-    id: 5,
     url: "/contact",
     text: "contact",
   },
+ 
 ];
 const team = [
   {
