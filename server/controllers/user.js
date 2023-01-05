@@ -54,7 +54,6 @@ exports.loginUser = async (req, res) => {
     if (!passwordCompare) {
       success = false;
       return res.status(500).json({
-        success,
         error: "Incorrect password",
       });
     }
@@ -66,7 +65,9 @@ exports.loginUser = async (req, res) => {
     // const authToken = jwt.sign(data, JWT_SECRET);
     // success = true;
     // res.json({ success, authToken });
-    res.json("successfully logged in");
+    else {
+      res.json({ success: "successfully logged in" });
+    }
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal Server error occured");

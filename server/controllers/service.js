@@ -2,7 +2,7 @@ const Service = require("../models/Service");
 const { validationResult } = require("express-validator");
 
 exports.getServices = async (req, res) => {
-  await Event.find().then((services) => {
+  await Service.find().then((services) => {
     res.status(400).json({
       services,
     });
@@ -15,9 +15,9 @@ exports.createService = async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const event = new Service(req.body);
+  const service = new Service(req.body);
   console.log("Creating service");
-  event.save().then((result) => {
+  service.save().then((result) => {
     res.status(400).json({
       result,
     });
