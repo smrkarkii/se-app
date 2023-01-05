@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import PostContext from "./postContext";
 
 const PostState = (props) => {
-  const host = "http://localhost:5000";
+  const host = "http://localhost:8000";
   const postsInitial = [];
   const servicesInitial = [];
   const contactsInitial = [];
   const reservationsInitial = [];
-  
+
   const [posts, setPosts] = useState(postsInitial);
   const [services, setServices] = useState(servicesInitial);
   const [contacts, setContacts] = useState(contactsInitial);
@@ -17,7 +17,7 @@ const PostState = (props) => {
   const getPosts = async () => {
     //API call
     setLoading(true);
-    const response = await fetch(`${host}/api/posts/fetchallposts`, {
+    const response = await fetch(`${host}/api/posts/getEvents`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -29,23 +29,26 @@ const PostState = (props) => {
     setPosts(json);
   };
 
-   //get all reservations
-   const getReservations = async () => {
+  //get all reservations
+  const getReservations = async () => {
     //API call
-    const response = await fetch(`${host}/api/reservations/fetchallreservations`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      `${host}/api/reservations/fetchallreservations`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const json = await response.json();
     console.log(json);
     setReservations(json);
   };
 
-   //get all contacts
-   const getContacts = async () => {
+  //get all contacts
+  const getContacts = async () => {
     //API call
     const response = await fetch(`${host}/api/contacts/fetchallcontacts`, {
       method: "GET",
@@ -62,7 +65,7 @@ const PostState = (props) => {
   //get all services
   const getServices = async () => {
     //API call
-    const response = await fetch(`${host}/api/services/fetchallservices`, {
+    const response = await fetch(`${host}/api/services/getServices`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -75,34 +78,48 @@ const PostState = (props) => {
   };
 
   //Add a post
-  const addPost = async (title,type,instructor,participants,organizer,description) => {
+  const addPost = async (
+    title,
+    type,
+    instructor,
+    participants,
+    organizer,
+    description
+  ) => {
     //API call
-    const response = await fetch(`${host}/api/posts/addposts`, {
+    const response = await fetch(`${host}/api/posts/addService`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({title,type,instructor,participants,organizer,description}),
+      body: JSON.stringify({
+        title,
+        type,
+        instructor,
+        participants,
+        organizer,
+        description,
+      }),
     });
 
     const post = await response.json();
     setPosts(posts.concat(post));
   };
 
-    //Add a service
-    const addService = async (title,description,starting_date,ending_date) => {
-        //API call
-        const response = await fetch(`${host}/api/services/addservices`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({title,description,starting_date,ending_date}),
-        });
-    
-        const service = await response.json();
-        setServices(services.concat(service));
-      };
+  //Add a service
+  const addService = async (title, description, starting_date, ending_date) => {
+    //API call
+    const response = await fetch(`${host}/api/services/addservices`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ title, description, starting_date, ending_date }),
+    });
+
+    const service = await response.json();
+    setServices(services.concat(service));
+  };
 
   //Delete a post
   const deletePost = async (id) => {
@@ -123,15 +140,18 @@ const PostState = (props) => {
     setPosts(newPosts);
   };
 
-   //Delete a reservation
-   const deleteReservation = async (id) => {
+  //Delete a reservation
+  const deleteReservation = async (id) => {
     //API call
-    const response = await fetch(`${host}/api/reservations/deletereservations/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      `${host}/api/reservations/deletereservations/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const json = response.json();
     console.log(json);
 
@@ -142,8 +162,8 @@ const PostState = (props) => {
     setReservations(newReservations);
   };
 
-   //Delete a contact
-   const deleteContact = async (id) => {
+  //Delete a contact
+  const deleteContact = async (id) => {
     //API call
     const response = await fetch(`${host}/api/contacts/deletecontacts/${id}`, {
       method: "DELETE",
@@ -161,34 +181,49 @@ const PostState = (props) => {
     setContacts(newContacts);
   };
 
-    //Delete a service
-    const deleteService = async (id) => {
-        //API call
-        const response = await fetch(`${host}/api/services/deleteservices/${id}`, {
-          method: "DELETE",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        const json = response.json();
-        console.log(json);
-    
-        // Logic to delete in client
-        const newServices= services.filter((service) => {
-          return service._id !== id;
-        });
-        setServices(newServices);
-      };
+  //Delete a service
+  const deleteService = async (id) => {
+    //API call
+    const response = await fetch(`${host}/api/services/deleteservices/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const json = response.json();
+    console.log(json);
+
+    // Logic to delete in client
+    const newServices = services.filter((service) => {
+      return service._id !== id;
+    });
+    setServices(newServices);
+  };
 
   //Edit a post
-  const editPost = async (id, title, type,instructor,participants,organizer,description) => {
+  const editPost = async (
+    id,
+    title,
+    type,
+    instructor,
+    participants,
+    organizer,
+    description
+  ) => {
     //API call
     const response = await fetch(`${host}/api/posts/updateposts/${id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ title,type,instructor,participants,organizer,description }),
+      body: JSON.stringify({
+        title,
+        type,
+        instructor,
+        participants,
+        organizer,
+        description,
+      }),
     });
     const json = response.json();
     console.log(json);
@@ -209,7 +244,27 @@ const PostState = (props) => {
 
   return (
     <PostContext.Provider
-      value={{ loading,posts,services,contacts,reservations,setContacts, setPosts,setServices, addPost,addService, deletePost,deleteService,deleteContact,deleteReservation, editPost, getPosts,getServices,getContacts,getReservations }}
+      value={{
+        loading,
+        posts,
+        services,
+        contacts,
+        reservations,
+        setContacts,
+        setPosts,
+        setServices,
+        addPost,
+        addService,
+        deletePost,
+        deleteService,
+        deleteContact,
+        deleteReservation,
+        editPost,
+        getPosts,
+        getServices,
+        getContacts,
+        getReservations,
+      }}
     >
       {props.children}
     </PostContext.Provider>
