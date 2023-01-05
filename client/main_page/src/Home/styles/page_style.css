@@ -1,0 +1,91 @@
+/* intro */
+.flex-intro{
+    margin : 5%;
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+.flex-item-intro{
+    margin: 1rem;
+    text-align: justify;
+}
+
+/* services */
+.services_title{
+text-align: center;
+}
+.flex-services{
+    margin : 5%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+.icon-services{
+    font-size: 300%;
+    color: rgba(0, 0, 155, 0.74);
+}
+.flex-item-services{
+    margin: 1rem;
+    text-align: center;
+}
+
+/* team */
+.TeamTitle{
+    text-align: center;
+}
+.flex-team{
+    margin : 5%;
+    display: grid;
+    gap: 2%;
+    grid-template-columns: auto auto;
+}
+.flex-item-team{
+    text-align: center;
+}
+.person-img {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.author {
+    padding: 1rem;
+    text-transform: capitalize;
+}
+
+.job {
+    text-transform: uppercase;
+    padding: .5rem;
+    color: #00009b9f;
+    font-size: 0.75rem;
+    margin: auto;
+}
+
+/* footer */
+.footer{
+    background-color: #00028d;
+    color: white;
+}
+.flex-footer{
+    display: grid;
+    padding: 7% 2%;
+    gap: 2%;
+    grid-template-columns: auto auto auto;
+}
+.flex-item-footer{
+    text-align: center;
+}
+
+@media screen and (min-width: 600px) {
+    /* services */
+    .icon-services{
+        font-size: 500%;
+    }
+
+    /* team */
+    .flex-team{
+        grid-template-columns: auto auto auto auto;
+    }
+    .person-img {
+        height: 50%;
+        width: 80%;
+}
+}

@@ -1,5 +1,7 @@
 import React from "react";
 import { FaChartBar, FaHubspot, FaCalendarCheck } from "react-icons/fa";
+import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
+
 
 export const links = [
   {
@@ -77,6 +79,23 @@ export const services = [
     title: "Reservations",
     icon: <FaCalendarCheck />,
     text: "Give us a call, or make reservations for any ICT related examinations, workshops or seminars. ",
+  },
+];
+export const social = [
+  {
+    id: 1,
+    url: "https://www.twitter.com",
+    icon: <FaFacebook />,
+  },
+  {
+    id: 2,
+    url: "https://www.twitter.com",
+    icon: <FaTwitter />,
+  },
+  {
+    id: 3,
+    url: "https://www.twitter.com",
+    icon: <FaLinkedin />,
   },
 ];
 

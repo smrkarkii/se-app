@@ -18,6 +18,8 @@ import Contact from "./Pages/contact";
 
 ReactDOM.render(
   <React.StrictMode>
+
+    
     <Navbar />
     <Router>
       <Routes>
