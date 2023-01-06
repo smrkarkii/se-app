@@ -9,7 +9,7 @@
     min-height: 30rem;
     text-align: center;
     padding: 3rem;
-    background-color: rgba(0, 0, 0, 0.082);
+    background-color: whitesmoke;
 }
 .item{
     display: flex;

@@ -19,6 +19,7 @@
   min-height: 30rem;
   align-items: center;
   padding: 3rem 2rem;
+  background-color: white;
   border-radius: var(--radius);
   box-shadow: var(--light-shadow);
   transition: var(--transition);
@@ -51,4 +52,12 @@
   color: rgba(0, 0, 155, 0.623);
   font-size: 0.75rem;
   margin: auto;
+}
+@media screen and (min-width:768px) {
+  .person-img{
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  }
 }

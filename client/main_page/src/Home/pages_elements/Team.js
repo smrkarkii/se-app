@@ -1,6 +1,7 @@
 import React from "react";
 import people from "../data";
 
+
 const Team = () => {
   return (
     <article className="team_main">
