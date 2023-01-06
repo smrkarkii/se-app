@@ -13,17 +13,17 @@ export default function Reservation() {
           <form class="bf-body-box" action="form.php">
             <div class="bf-row">
               <div class="bf-col-6">
-                <p class="p">Your Name</p>
+                <p class="p-reservation">Your Name</p>
                 <input
                   class="input"
-                  type="text"
+                  type="textarea"
                   name="fname"
                   id="fname"
                   placeholder="Your Name"
                 />
               </div>
               <div class="bf-col-6">
-                <p class="p">Email Address</p>
+                <p class="p-reservation">Email Address</p>
                 <input
                   class="input"
                   type="email"
@@ -36,14 +36,14 @@ export default function Reservation() {
 
             <div class="bf-row">
               <div class="bf-col-6">
-                <p class="p">Select Date</p>
+                <p class="p-reservation">Select Date</p>
                 <input class="input" type="date" name="date" id="date" />
               </div>
             </div>
 
             <div class="bf-row">
               <div class="bf-col-12">
-                <p class="p">Messages</p>
+                <p class="p-reservation">Messages</p>
                 <textarea
                   class="textarea"
                   name="Messages"
@@ -56,13 +56,8 @@ export default function Reservation() {
 
             <div class="bf-row">
               <div class="bf-col-3">
-                <input
-                  className="mask"
-                  style={{ backgroundColor: "rgba(251, 251, 251, 0.2)" }}
-                  class="input"
-                  type="submit"
-                  value="Submit"
-                />
+                <input type="submit" value="Submit"></input>
+                
               </div>
             </div>
           </form>

@@ -1,5 +1,5 @@
 import React from "react";
-import { FaChartBar, FaHubspot, FaCalendarCheck } from "react-icons/fa";
+import { FaChartBar, FaHubspot, FaCalendarCheck, FaGoogle } from "react-icons/fa";
 import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 
@@ -96,6 +96,11 @@ export const social = [
     id: 3,
     url: "https://www.twitter.com",
     icon: <FaLinkedin />,
+  },
+  {
+    id: 4,
+    url: "https://www.google.com",
+    icon: <FaGoogle />,
   },
 ];
 

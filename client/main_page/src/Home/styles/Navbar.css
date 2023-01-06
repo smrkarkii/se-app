@@ -24,7 +24,7 @@ nav {
 .sign-up{
     display: none;
 }
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 600px) {
     .nav-center {
         max-width: 1170px;
         margin: auto;
@@ -36,6 +36,7 @@ nav {
 
     .nav-header {
         padding: 0;
+        
     }
 
     .nav-toggle {
@@ -72,7 +73,9 @@ nav {
 }
 
 .logo {
-    height: 60px;
+    height: 40px;
+    width: 100px;
+    margin: 5px;
 }
 
 .links a {

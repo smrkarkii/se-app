@@ -4,9 +4,9 @@ const Contact = () => {
   return (
     <>
       <section className="ge-section">
+        <div class="contact-container">
         <h1 className="ge-header">Contact</h1>
         <div className="underline"></div>
-        <div class="container">
           <form>
             <label for="fname">First Name</label>
             <input
