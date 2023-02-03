@@ -1,7 +1,11 @@
 import React from "react";
-import { FaChartBar, FaHubspot, FaCalendarCheck, FaGoogle } from "react-icons/fa";
+import {
+  FaChartBar,
+  FaHubspot,
+  FaCalendarCheck,
+  FaGoogle,
+} from "react-icons/fa";
 import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
-
 
 export const links = [
   {
@@ -19,14 +23,16 @@ export const links = [
     url: "/events",
     text: "events",
   },
- 
-
   {
     id: 4,
+    url: "/reservations",
+    text: "reservations",
+  },
+  {
+    id: 5,
     url: "/contact",
     text: "contact",
   },
- 
 ];
 const team = [
   {
@@ -42,7 +48,6 @@ const team = [
     job: "web designer",
     image:
       "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883409/person-2_np9x5l.jpg",
-  
   },
   {
     id: 3,
