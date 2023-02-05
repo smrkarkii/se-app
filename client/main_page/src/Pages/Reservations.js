@@ -56,8 +56,9 @@ export default function Reservation() {
 
             <div class="bf-row">
               <div class="bf-col-3">
-                <input type="submit" value="Submit"></input>
-                
+                <a href="/login" className="submit">
+                  Submit
+                </a>
               </div>
             </div>
           </form>
