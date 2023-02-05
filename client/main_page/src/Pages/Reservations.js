@@ -1,7 +1,54 @@
 import React from "react";
 import "./style.css";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Reservation() {
+  const Navigate = useNavigate();
+
+  const [reservation, setReservation] = useState({
+    name: "",
+    email: "",
+    date: "",
+    message: "",
+  });
+  const inputHandler = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+    setReservation({
+      ...reservation,
+      [name]: value,
+    });
+    console.log(reservation);
+  };
+
+  const reservePost = async (e) => {
+    console.log("reserving");
+    e.preventDefault();
+    let { name, email, date, message } = reservation;
+    let res = await fetch("http://localhost:8000/reservation/create", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        message,
+        date,
+      }),
+    });
+    let data = res.json();
+    if (data.status === 500) {
+      window.alert("Invalid");
+    } else {
+      window.alert(
+        "Reservation has been requested. You will be mailed login credentials to proceed reservation."
+      );
+      Navigate("/login");
+    }
+  };
+
   return (
     <div className="pages-bg">
       <div class="bf-container">
@@ -10,15 +57,17 @@ export default function Reservation() {
             <h1 class="h1">Reservation Form</h1>
           </div>
 
-          <form class="bf-body-box" action="form.php">
+          <form class="bf-body-box" method="POST">
             <div class="bf-row">
               <div class="bf-col-6">
                 <p class="p-reservation">Your Name</p>
                 <input
                   class="input"
                   type="textarea"
-                  name="fname"
-                  id="fname"
+                  name="name"
+                  id="name"
+                  value={reservation.name}
+                  onChange={inputHandler}
                   placeholder="Your Name"
                 />
               </div>
@@ -29,6 +78,8 @@ export default function Reservation() {
                   type="email"
                   name="email"
                   id="email"
+                  value={reservation.email}
+                  onChange={inputHandler}
                   placeholder="Email Address"
                 />
               </div>
@@ -46,8 +97,10 @@ export default function Reservation() {
                 <p class="p-reservation">Messages</p>
                 <textarea
                   class="textarea"
-                  name="Messages"
-                  id="Messages"
+                  name="message"
+                  id="message"
+                  value={reservation.message}
+                  onChange={inputHandler}
                   cols="10"
                   rows="2"
                 ></textarea>
@@ -56,9 +109,9 @@ export default function Reservation() {
 
             <div class="bf-row">
               <div class="bf-col-3">
-                <a href="/login" className="submit">
-                  Submit
-                </a>
+                <button className="submit" type="button" onClick={reservePost}>
+                  Reserve
+                </button>
               </div>
             </div>
           </form>

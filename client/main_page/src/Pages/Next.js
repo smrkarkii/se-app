@@ -1,10 +1,13 @@
 import React from "react";
 import "./style.css";
+import qr from "./qr.png";
+import "./style.css";
 
 export default function Next() {
   return (
     <center>
-      <h1 style={{'margin-top': '200px', 'color':'white'}}> New Page </h1>
+      <img class="qrimage" src={qr} alt="qr" />
+      <h1 class="h1">Scan to Pay</h1>
     </center>
   );
 }

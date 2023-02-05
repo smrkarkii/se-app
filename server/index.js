@@ -8,6 +8,7 @@ const event_routes = require("./routes/event");
 const service_routes = require("./routes/service");
 const user_routes = require("./routes/user");
 const cred_routes = require("./routes/credential");
+const reserve_routes = require("./routes/reservation");
 var cors = require("cors");
 
 app.use(cors());
@@ -25,6 +26,7 @@ app.use("/", event_routes);
 app.use("/", service_routes);
 app.use("/", user_routes);
 app.use("/", cred_routes);
+app.use("/", reserve_routes);
 //app.use("/", )
 
 //database connecting to mongo db

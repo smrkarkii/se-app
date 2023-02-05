@@ -1,6 +1,45 @@
 import "./style.css";
+import { useState, React } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const Navigate = useNavigate();
+  const [cred, setCred] = useState({
+    username: "",
+    password: "",
+  });
+  const inputHandler = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+    setCred({
+      ...cred,
+      [name]: value,
+    });
+    console.log(cred);
+  };
+
+  const verifyCred = async (e) => {
+    console.log("Verifying");
+    e.preventDefault();
+    let { username, password } = cred;
+    let res = await fetch("http://localhost:8000/credential/verify", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username,
+        password,
+      }),
+    });
+    let data = res.json();
+    if (data.status === 500) {
+      window.alert("Invalid");
+    } else {
+      window.alert("successfull");
+      Navigate("/Next");
+    }
+  };
   return (
     <div className="pages-bg">
       <div class="bf-container">
@@ -9,17 +48,19 @@ const Login = () => {
             <h1 class="h1">Login Form</h1>
           </div>
 
-          <form class="bf-body-box" action="form.php">
+          <form method="POST" class="bf-body-box">
             <div class="bf-row">
               <div class="bf-col-6">
-                <p class="p-reservation">Email Address</p>
+                <p class="p-reservation">Username</p>
                 <input
                   class="input"
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Email Address"
+                  type="text"
+                  name="username"
+                  id="username"
+                  onChange={inputHandler}
+                  placeholder="Username"
                   required
+                  value={cred.username}
                 />
               </div>
             </div>
@@ -31,7 +72,9 @@ const Login = () => {
                   type="password"
                   name="password"
                   id="password"
+                  onChange={inputHandler}
                   placeholder="password"
+                  value={cred.password}
                   required
                 ></input>
               </div>
@@ -39,9 +82,9 @@ const Login = () => {
 
             <div class="bf-row">
               <div class="bf-col-3">
-                <a href="/next" className="submit">
-                  Submit
-                </a>
+                <button className="submit" type="button" onClick={verifyCred}>
+                  Verify
+                </button>
               </div>
             </div>
           </form>
