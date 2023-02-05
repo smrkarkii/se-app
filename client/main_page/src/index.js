@@ -14,6 +14,8 @@ import Gallery from "./Pages/Gallery";
 import Events from "./Pages/Events.js";
 import Reservations from "./Pages/Reservations.js";
 import Contact from "./Pages/contact";
+import Login from "./Pages/Login";
+import Next from "./Pages/Next.js";
 
 
 ReactDOM.render(
@@ -28,6 +30,8 @@ ReactDOM.render(
         <Route exact path="/Events" element={<Events />} />
         <Route exact path="/Reservations" element={<Reservations />} />
         <Route exact path="/contact" element={<Contact />} />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/next" element={<Next />} />
       </Routes>
     </Router>
   </React.StrictMode>,
