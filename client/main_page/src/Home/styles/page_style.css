@@ -25,7 +25,7 @@ text-align: center;
     grid-template-columns: auto auto auto;
 }
 .icon-services{
-    font-size: 300%;
+    font-size: 200%;
     color: rgba(0, 0, 155, 0.74);
 }
 .flex-item-services{

@@ -35,7 +35,7 @@ export default function PageContent() {
         getReservations();
         // eslint-disable-next-line
       } else {
-        navigate("/login");
+        navigate("/admin/login");
       }
     }
     // ,[]
