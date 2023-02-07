@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import qr from "./qr.png";
+import qr from "./qr.PNG";
 import "./style.css";
 
 export default function Next() {

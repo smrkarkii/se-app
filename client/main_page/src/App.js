@@ -1,24 +1,25 @@
+// import logo from './logo.svg';
+import "./App.css";
+
 import React from "react";
-//page elements
-import Intro from "./Home/pages_elements/Intro";
-import Services from "./Home/pages_elements/Services";
-import Footer from "./Home/pages_elements/Footer";
-import Team from "./Home/pages_elements/Team";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import MainPage from "./MainPage";
+import PostState from "./context/post/PostState";
+import PageContent from "./components/PageContent";
+import Login from "./components/Login";
 
-import "./App.css"
-
-function App() {
+export default function App() {
   return (
     <>
-      {/* Banner */}
-      <div className="banner"></div>
-
-      <Intro />
-      <Services />
-      <Team />
-      <Footer />
+      <PostState>
+        <Router>
+          <Routes>
+            <Route path="*" element={<MainPage />} />
+            <Route path="/admin/login" element={<Login />} />
+            <Route path="/admin/*" element={<PageContent />} />
+          </Routes>
+        </Router>
+      </PostState>
     </>
   );
 }
-
-export default App;
