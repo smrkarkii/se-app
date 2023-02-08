@@ -3,7 +3,7 @@ const { validationResult } = require("express-validator");
 
 exports.getServices = async (req, res) => {
   await Service.find().then((services) => {
-    res.status(400).json({
+    res.status(200).json({
       services,
     });
   });

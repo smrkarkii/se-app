@@ -3,7 +3,7 @@ const Reservation = require("../models/Reservation");
 
 exports.getReservations = async (req, res) => {
   await Reservation.find().then((reservations) => {
-    res.status(400).json({
+    res.status(200).json({
       reservations,
     });
   });
@@ -31,7 +31,7 @@ exports.deleteReservation = async (req, res) => {
       res.send("No Reservation found");
     } else {
       serv = await Reservation.findByIdAndDelete(req.params.id);
-      res.status(400).json({ Success: "Successfully deleted" });
+      res.status(200).json({ Success: "Successfully deleted" });
     }
   } catch (err) {
     console.log(err);

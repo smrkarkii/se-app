@@ -21,25 +21,20 @@ export default function PageContent() {
     services,
     getServices,
     contacts,
-    getContacts,
     reservations,
     getReservations,
   } = context;
   let navigate = useNavigate();
-  useEffect(
-    () => {
-      if (localStorage.getItem("token")) {
-        getServices();
-        getPosts();
-        getContacts();
-        getReservations();
-        // eslint-disable-next-line
-      } else {
-        navigate("/admin/login");
-      }
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      getServices();
+      getPosts();
+      getReservations();
+      // eslint-disable-next-line
+    } else {
+      navigate("/admin/login");
     }
-    // ,[]
-  );
+  }, []);
 
   const [alert, setAlert] = useState(null);
 

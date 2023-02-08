@@ -2,7 +2,7 @@ const Event = require("../models/Event");
 
 exports.getEvents = (req, res) => {
   Event.find().then((events) => {
-    res.status(400).json({
+    res.status(200).json({
       events,
     });
   });

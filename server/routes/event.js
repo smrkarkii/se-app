@@ -4,6 +4,6 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/events", getEvents);
-router.post("/event/new", createEvent);
+router.post("/events/new", createEvent);
 
 module.exports = router;

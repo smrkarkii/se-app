@@ -5,6 +5,6 @@ const router = express.Router();
 const { serviceValidator } = require("../validators/validators");
 
 router.get("/services", getServices);
-router.post("/service/new", serviceValidator, createService);
+router.post("/services/new", serviceValidator, createService);
 
 module.exports = router;

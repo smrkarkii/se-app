@@ -17,7 +17,7 @@ const PostState = (props) => {
   const getPosts = async () => {
     //API call
     setLoading(true);
-    const response = await fetch(`${host}/api/posts/getEvents`, {
+    const response = await fetch(`${host}/events`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -32,15 +32,12 @@ const PostState = (props) => {
   //get all reservations
   const getReservations = async () => {
     //API call
-    const response = await fetch(
-      `${host}/api/reservations/fetchallreservations`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(`${host}/reservations`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     const json = await response.json();
     console.log(json);
@@ -50,7 +47,7 @@ const PostState = (props) => {
   //get all contacts
   const getContacts = async () => {
     //API call
-    const response = await fetch(`${host}/api/contacts/fetchallcontacts`, {
+    const response = await fetch(`${host}/contacts`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -65,7 +62,7 @@ const PostState = (props) => {
   //get all services
   const getServices = async () => {
     //API call
-    const response = await fetch(`${host}/api/services/getServices`, {
+    const response = await fetch(`${host}/services`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -77,7 +74,7 @@ const PostState = (props) => {
     setServices(json);
   };
 
-  //Add a post
+  //Add a post/event
   const addPost = async (
     title,
     type,
@@ -87,7 +84,7 @@ const PostState = (props) => {
     description
   ) => {
     //API call
-    const response = await fetch(`${host}/api/posts/addService`, {
+    const response = await fetch(`${host}/events/new`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -109,7 +106,7 @@ const PostState = (props) => {
   //Add a service
   const addService = async (title, description, starting_date, ending_date) => {
     //API call
-    const response = await fetch(`${host}/api/services/addservices`, {
+    const response = await fetch(`${host}/services/new`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -124,7 +121,7 @@ const PostState = (props) => {
   //Delete a post
   const deletePost = async (id) => {
     //API call
-    const response = await fetch(`${host}/api/posts/deleteposts/${id}`, {
+    const response = await fetch(`${host}/events/deleted/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -143,15 +140,12 @@ const PostState = (props) => {
   //Delete a reservation
   const deleteReservation = async (id) => {
     //API call
-    const response = await fetch(
-      `${host}/api/reservations/deletereservations/${id}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await fetch(`${host}/api/reservations/delete/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     const json = response.json();
     console.log(json);
 
@@ -165,7 +159,7 @@ const PostState = (props) => {
   //Delete a contact
   const deleteContact = async (id) => {
     //API call
-    const response = await fetch(`${host}/api/contacts/deletecontacts/${id}`, {
+    const response = await fetch(`${host}/contacts/delete/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -184,7 +178,7 @@ const PostState = (props) => {
   //Delete a service
   const deleteService = async (id) => {
     //API call
-    const response = await fetch(`${host}/api/services/deleteservices/${id}`, {
+    const response = await fetch(`${host}/services/delete/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -211,7 +205,7 @@ const PostState = (props) => {
     description
   ) => {
     //API call
-    const response = await fetch(`${host}/api/posts/updateposts/${id}`, {
+    const response = await fetch(`${host}/posts/update/${id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

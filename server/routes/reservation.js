@@ -8,6 +8,6 @@ const router = express.Router();
 const { ReservationValidator } = require("../validators/validators");
 
 router.get("/reservations", getReservations);
-router.post("/reservation/create", createReservation);
+router.post("/reservations/new", createReservation);
 
 module.exports = router;
