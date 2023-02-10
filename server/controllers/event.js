@@ -12,7 +12,7 @@ exports.createEvent = (req, res) => {
   const event = new Event(req.body);
   console.log("Creating event");
   event.save().then((result) => {
-    res.status(400).json({
+    res.status(200).json({
       result,
     });
   });
@@ -24,7 +24,7 @@ exports.deleteEvent = async (req, res) => {
       res.send("No event found");
     } else {
       event = await Event.findByIdAndDelete(req.params.id);
-      res.status(400).json({ Success: "Successfully deleted" });
+      res.status(200).json({ Success: "Successfully deleted" });
     }
   } catch (err) {
     console.log(err);
@@ -36,7 +36,7 @@ exports.updateEvent = async (req, res) => {
   try {
     let event = Event.findById(req.params.id);
     if (!event) {
-      res.status(404).send("No srvice");
+      res.status(404).send("No service");
     } else {
       event = await Event.findByIdAndUpdate(req.params.id);
     }

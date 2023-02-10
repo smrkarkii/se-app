@@ -17,11 +17,16 @@ exports.createCred = async (req, res) => {
 };
 
 exports.getCredential = async (req, res) => {
-  await Credential.find().then((credentials) => {
-    res.status(400).json({
-      credentials,
+  try {
+    await Credential.find().then((credentials) => {
+      res.status(200).json({
+        credentials,
+      });
     });
-  });
+  } catch (err) {
+    console.log(err);
+    res.status(500);
+  }
 };
 
 exports.verifyCred = async (req, res) => {
@@ -29,21 +34,27 @@ exports.verifyCred = async (req, res) => {
   try {
     let user = await Credential.findOne({ username });
     if (!user) {
+      success = false;
       return res
-        .status(400)
-        .json({ error: "Please try to login with correct credentials" });
+        .status(404)
+        .json({
+          success,
+          error: "Please try to login with correct credentials",
+        });
     }
     const passwordCompare = password == user.password;
     if (!passwordCompare) {
       success = false;
-      return res.status(500).json({
+      return res.status(401).json({
+        success,
         error: "Incorrect password",
       });
     } else {
-      res.json({ success: "successfully logged in" });
+      success = true;
+      res.status(200).json({ success, message: "successfully logged in" });
     }
   } catch (error) {
     console.error(error.message);
-    res.status(500).send("Internal Server error occured");
+    res.status(500).json({ success, message: "internal server error " });
   }
 };

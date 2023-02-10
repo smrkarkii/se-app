@@ -18,7 +18,7 @@ exports.createService = async (req, res) => {
   const service = new Service(req.body);
   console.log("Creating service");
   service.save().then((result) => {
-    res.status(400).json({
+    res.status(200).json({
       result,
     });
   });
@@ -31,7 +31,7 @@ exports.deleteService = async (req, res) => {
       res.send("No service found");
     } else {
       serv = await Service.findByIdAndDelete(req.params.id);
-      res.status(400).json({ Success: "Successfully deleted" });
+      res.status(200).json({ Success: "Successfully deleted" });
     }
   } catch (err) {
     console.log(err);

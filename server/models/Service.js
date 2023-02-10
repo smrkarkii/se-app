@@ -11,6 +11,12 @@ const serviceSchema = new mongoose.Schema(
     picture: {
       type: String,
     },
+    starting_date: {
+      type: Date,
+    },
+    ending_date: {
+      type: Date,
+    },
   },
   { timestamps: true }
 );

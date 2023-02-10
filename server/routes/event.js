@@ -5,5 +5,6 @@ const router = express.Router();
 
 router.get("/events", getEvents);
 router.post("/events/new", createEvent);
+router.delete("/events/delete", createEvent);
 
 module.exports = router;

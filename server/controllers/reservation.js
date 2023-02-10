@@ -14,14 +14,20 @@ exports.createReservation = async (req, res) => {
   //   if (!errors.isEmpty()) {
   //     return res.status(400).json({ errors: errors.array() });
   //   }
-
-  const reservation = new Reservation(req.body);
-  console.log("Creating reservation");
-  reservation.save().then((result) => {
-    res.status(400).json({
-      result,
+  try {
+    const reservation = new Reservation(req.body);
+    console.log("Creating reservation");
+    reservation.save().then((result) => {
+      res.status(200).json({
+        result,
+      });
     });
-  });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: "INternal server error",
+    });
+  }
 };
 
 exports.deleteReservation = async (req, res) => {
