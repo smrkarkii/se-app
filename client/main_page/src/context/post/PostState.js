@@ -26,7 +26,7 @@ const PostState = (props) => {
     const json = await response.json();
     setLoading(false);
     console.log(json);
-    setPosts(json);
+    setPosts(json.events);
   };
 
   //get all reservations
@@ -41,7 +41,7 @@ const PostState = (props) => {
 
     const json = await response.json();
     console.log(json);
-    setReservations(json);
+    setReservations(json.reservations);
   };
 
   //get all contacts
@@ -55,8 +55,8 @@ const PostState = (props) => {
     });
 
     const json = await response.json();
-    console.log(json);
-    setContacts(json);
+
+    setContacts(json.Contacts);
   };
 
   //get all services
@@ -71,15 +71,15 @@ const PostState = (props) => {
 
     const json = await response.json();
     console.log(json);
-    setServices(json);
+    setServices(json.services);
   };
 
   //Add a post/event
   const addPost = async (
     title,
     type,
-    instructor,
     participants,
+    instructors,
     organizer,
     description
   ) => {
@@ -92,8 +92,8 @@ const PostState = (props) => {
       body: JSON.stringify({
         title,
         type,
-        instructor,
         participants,
+        instructors,
         organizer,
         description,
       }),
@@ -116,6 +116,19 @@ const PostState = (props) => {
 
     const service = await response.json();
     setServices(services.concat(service));
+  };
+  const addContact = async (name, email, message) => {
+    //API call
+    const response = await fetch(`${host}/contacts/new`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, email, message }),
+    });
+
+    const contact = await response.json();
+    setContacts(contacts.concat(contact));
   };
 
   //Delete a post
@@ -199,7 +212,7 @@ const PostState = (props) => {
     id,
     title,
     type,
-    instructor,
+    instructors,
     participants,
     organizer,
     description
@@ -213,7 +226,7 @@ const PostState = (props) => {
       body: JSON.stringify({
         title,
         type,
-        instructor,
+        instructors,
         participants,
         organizer,
         description,
@@ -228,7 +241,7 @@ const PostState = (props) => {
       if (element._id === id) {
         element.title = title;
         element.description = description;
-        element.instructor = instructor;
+        element.instructors = instructors;
         element.participants = participants;
         element.type = type;
         element.organizer = organizer;
@@ -249,6 +262,7 @@ const PostState = (props) => {
         setServices,
         addPost,
         addService,
+        addContact,
         deletePost,
         deleteService,
         deleteContact,

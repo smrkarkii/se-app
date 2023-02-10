@@ -57,6 +57,7 @@ export default function PageContent() {
       setShow(true);
     }
   };
+  console.log(contacts.length);
 
   return (
     <>

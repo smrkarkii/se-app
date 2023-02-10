@@ -21,14 +21,13 @@ export default function ContactTable(props) {
                 deleteContact(contact._id);
               }}
             ></i>
-            <i className="far fa-edit mx-2"></i>
           </div>
           <h5 className="card-title">Email: {contact.email}</h5>
 
-          <p className="card-text">{contact.description}</p>
+          <p className="card-text">{contact.message}</p>
           <p className="card-text">
             <small className="text-muted">
-              {new Date(contact.date).toGMTString()}
+              {/* {new Date(contact.date).toGMTString()} */}
             </small>
           </p>
         </div>
