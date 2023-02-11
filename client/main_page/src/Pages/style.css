@@ -37,8 +37,7 @@
 }
 .bf-body-box {
   padding: 20px;
-
-  color: #0b2358;
+  border-radius: 10px;
 }
 
 .bf-row {
@@ -67,10 +66,12 @@
 .bf-footer {
   background-color: #1221a5d3;
   padding: 20px 10px;
+  border-radius: 10px;
 }
 
 .bf-container {
   margin-top: 10%;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,20 +79,20 @@
   min-height: 100vh;
   overflow-y: auto;
   padding: 20px 16px;
-  background-color: #baf3d7;
 }
 
 .bf-body {
   width: 500px;
+  border-radius: 10px;
   background-color: #ffffff;
 }
 
 /* Gallery and Events */
 .ge-container {
-  max-width: 20%;
   display: grid;
-  gap: 2rem;
-  grid-template-columns: auto;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-gap: 2rem;
+  margin-top: 2rem;
 }
 @media screen and (min-width: 800px) {
   .ge-container {
@@ -103,11 +104,12 @@
 }
 .ge-section {
   margin: 5%;
+
   padding: 20px;
   background-color: white;
 }
 .ge-header {
-  text-align: center;
+  margin-top: 2rem;
 }
 .ge-title {
   margin: 1rem;
@@ -117,6 +119,8 @@
   background: rgba(27, 31, 43, 0.089);
   border-radius: 1rem;
   padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 img {
@@ -167,9 +171,15 @@ form {
   .ge-section {
     margin-top: 10%;
   }
+  .ge-header {
+    text-align: center;
+  }
 }
 .qrimage {
   margin-top: 100px;
   height: 400px;
   width: auto;
+}
+.ge-header {
+  text-align: center;
 }

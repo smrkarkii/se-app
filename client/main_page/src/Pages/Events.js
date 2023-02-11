@@ -3,7 +3,15 @@ import { events } from "./data";
 const Events = () => {
   return (
     <>
-      <section className="ge-section">
+      {(document.title = "ICTC - Events")}
+      <section
+        className="ge-section"
+        style={{
+          marginTop: "7rem",
+          marginBottom: "2rem",
+          borderRadius: "10px",
+        }}
+      >
         <h1 className="ge-header">Events</h1>
         <div className="underline"></div>
         <div className="ge-container">

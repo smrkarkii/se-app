@@ -4,6 +4,7 @@ import {
   FaHubspot,
   FaCalendarCheck,
   FaGoogle,
+  FaSignInAlt,
 } from "react-icons/fa";
 import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
 
@@ -32,6 +33,11 @@ export const links = [
     id: 5,
     url: "/contact",
     text: "contact",
+  },
+  {
+    id: 6,
+    url: "/login",
+    text: <FaSignInAlt />,
   },
 ];
 const team = [

@@ -28,12 +28,15 @@ const Contact = () => {
   };
   return (
     <>
+      {(document.title = "ICTC - Contact")}
       <section className="ge-section">
         <div class="contact-container">
           <h1 className="ge-header">Contact</h1>
           <div className="underline"></div>
           <form method="POST">
-            <label for="fname">Full Name</label>
+            <label class="con" for="fname">
+              Full Name
+            </label>
             <input
               type="text"
               id="name"
@@ -43,7 +46,9 @@ const Contact = () => {
               value={cont.name}
             ></input>
 
-            <label for="lname">Email</label>
+            <label class="con" for="lname">
+              Email
+            </label>
             <input
               type="text"
               id="email"
@@ -53,7 +58,9 @@ const Contact = () => {
               value={cont.email}
             ></input>
 
-            <label for="subject">Message</label>
+            <label class="con" for="subject">
+              Message
+            </label>
             <textarea
               id="message"
               name="message"

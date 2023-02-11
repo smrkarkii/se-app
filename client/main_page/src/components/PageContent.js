@@ -60,6 +60,7 @@ export default function PageContent() {
 
   return (
     <>
+      {(document.title = "ICTC - Admin")}
       <div className="d-flex" id="wrapper">
         {show ? <SideBar showAlert={showAlert} /> : null}
         {/* ----------------Page Content Begins--------------- */}
@@ -159,21 +160,29 @@ export default function PageContent() {
                 </div>
               </div>
             </div>
-
-            <Routes>
-              <Route path="/post" element={<Post />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/reservation" element={<Reservation />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route
-                path="/postform"
-                element={<PostForm showAlert={showAlert} />}
-              />
-              <Route
-                path="/serviceform"
-                element={<ServiceForm showAlert={showAlert} />}
-              />
-            </Routes>
+            <div
+              style={{
+                position: "relative",
+                marginBottom: "1rem",
+                backgroundColor: "black",
+                height: "67vh",
+              }}
+            >
+              <Routes>
+                <Route path="/post" element={<Post />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/reservation" element={<Reservation />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route
+                  path="/postform"
+                  element={<PostForm showAlert={showAlert} />}
+                />
+                <Route
+                  path="/serviceform"
+                  element={<ServiceForm showAlert={showAlert} />}
+                />
+              </Routes>
+            </div>
           </div>
         </div>
       </div>

@@ -31,7 +31,7 @@ export default function SideBar() {
           to="/admin/post"
           className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
         >
-          <i className="fas fa-solid fa-pen me-2"></i>Posts
+          <i className="fas fa-solid fa-pen me-2"></i>Events
         </Link>
         <Link
           to="/admin/services"

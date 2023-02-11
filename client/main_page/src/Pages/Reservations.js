@@ -50,80 +50,87 @@ export default function Reservation() {
   };
 
   return (
-    <div className="pages-bg">
-      <div class="bf-container">
-        <div class="bf-body">
-          <div class="bf-head">
-            <h1 class="h1">Reservation Form</h1>
+    <>
+      {(document.title = "ICTC - Reservation")}
+      <div className="pages-bg">
+        <div class="bf-container">
+          <div class="bf-body">
+            <div class="bf-head">
+              <h1 class="h1">Reservation Form</h1>
+            </div>
+
+            <form class="bf-body-box" method="POST">
+              <div class="bf-row">
+                <div class="bf-col-6">
+                  <p class="p-reservation">Your Name</p>
+                  <input
+                    class="input"
+                    type="textarea"
+                    name="name"
+                    id="name"
+                    value={reservation.name}
+                    onChange={inputHandler}
+                    placeholder="Your Name"
+                  />
+                </div>
+                <div class="bf-col-6">
+                  <p class="p-reservation">Email Address</p>
+                  <input
+                    class="input"
+                    type="email"
+                    name="email"
+                    id="email"
+                    value={reservation.email}
+                    onChange={inputHandler}
+                    placeholder="Email Address"
+                  />
+                </div>
+              </div>
+
+              <div class="bf-row">
+                <div class="bf-col-6">
+                  <p class="p-reservation">Select Date</p>
+                  <input
+                    class="input"
+                    type="date"
+                    name="date"
+                    id="date"
+                    value={reservation.date}
+                    onChange={inputHandler}
+                  />
+                </div>
+              </div>
+
+              <div class="bf-row">
+                <div class="bf-col-12">
+                  <p class="p-reservation">Messages</p>
+                  <textarea
+                    class="textarea"
+                    name="message"
+                    id="message"
+                    value={reservation.message}
+                    onChange={inputHandler}
+                    cols="10"
+                    rows="2"
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="bf-row">
+                <div class="bf-col-3">
+                  <button
+                    className="submit"
+                    type="button"
+                    onClick={reservePost}
+                  >
+                    Reserve
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
-
-          <form class="bf-body-box" method="POST">
-            <div class="bf-row">
-              <div class="bf-col-6">
-                <p class="p-reservation">Your Name</p>
-                <input
-                  class="input"
-                  type="textarea"
-                  name="name"
-                  id="name"
-                  value={reservation.name}
-                  onChange={inputHandler}
-                  placeholder="Your Name"
-                />
-              </div>
-              <div class="bf-col-6">
-                <p class="p-reservation">Email Address</p>
-                <input
-                  class="input"
-                  type="email"
-                  name="email"
-                  id="email"
-                  value={reservation.email}
-                  onChange={inputHandler}
-                  placeholder="Email Address"
-                />
-              </div>
-            </div>
-
-            <div class="bf-row">
-              <div class="bf-col-6">
-                <p class="p-reservation">Select Date</p>
-                <input
-                  class="input"
-                  type="date"
-                  name="date"
-                  id="date"
-                  value={reservation.date}
-                  onChange={inputHandler}
-                />
-              </div>
-            </div>
-
-            <div class="bf-row">
-              <div class="bf-col-12">
-                <p class="p-reservation">Messages</p>
-                <textarea
-                  class="textarea"
-                  name="message"
-                  id="message"
-                  value={reservation.message}
-                  onChange={inputHandler}
-                  cols="10"
-                  rows="2"
-                ></textarea>
-              </div>
-            </div>
-
-            <div class="bf-row">
-              <div class="bf-col-3">
-                <button className="submit" type="button" onClick={reservePost}>
-                  Reserve
-                </button>
-              </div>
-            </div>
-          </form>
         </div>
       </div>
-    </div>
+    </>
   );
 }

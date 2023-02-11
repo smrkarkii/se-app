@@ -78,6 +78,7 @@ const Login = () => {
                   placeholder="password"
                   value={cred.password}
                   required
+                  style={{ width: "50%" }}
                 ></input>
               </div>
             </div>

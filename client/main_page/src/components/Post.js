@@ -25,7 +25,7 @@ export default function Post() {
       <div className="bg-white container rounded">
         <div className="container">
           <div className="mt-3 d-flex justify-content-between bg-white align-items-center">
-            <h2 className="mx-2 my-2">Posts </h2>
+            <h2 className="mx-2 my-2">Events </h2>
             <Link to="/admin/postform">
               <button type="button" className="btn btn-primary">
                 Add New <span className="badge bg-success">+</span>

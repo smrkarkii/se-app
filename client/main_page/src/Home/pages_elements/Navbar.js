@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { links } from "../data";
 import logo from "../images/logo.png";
@@ -24,7 +25,9 @@ const Navbar = () => {
     <nav>
       <div className="nav-center">
         <div className="nav-header">
-          <img src={logo} className="logo" alt="logo" />
+          <Link to="/">
+            <img src={logo} className="logo" alt="logo" />
+          </Link>
           <button className="nav-toggle" onClick={toggleLinks}>
             <FaBars />
           </button>
@@ -35,7 +38,7 @@ const Navbar = () => {
               const { id, url, text } = link;
               return (
                 <li key={id}>
-                  <a href={url}>{text}</a>
+                  <Link to={url}>{text}</Link>
                 </li>
               );
             })}
