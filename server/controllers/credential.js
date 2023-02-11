@@ -47,25 +47,28 @@ exports.verifyCred = async (req, res) => {
   try {
     let user = await Credential.findOne({ username });
     if (!user) {
+      return res
+        .status(400)
+        .json({ error: "Please try to login with correct credentials" });
+    }
+    const passwordCompare = await bcrypt.compare(password, user.password);
+    if (!passwordCompare) {
       success = false;
-      return res.status(404).json({
+      return res.status(400).json({
         success,
         error: "Please try to login with correct credentials",
       });
     }
-    const passwordCompare = password == user.password;
-    if (!passwordCompare) {
-      success = false;
-      return res.status(401).json({
-        success,
-        error: "Incorrect password",
-      });
-    } else {
-      success = true;
-      res.status(200).json({ success, message: "successfully logged in" });
-    }
+    const data = {
+      user: {
+        id: user.id,
+      },
+    };
+    const authToken = jwt.sign(data, JWT_SECRET);
+    success = true;
+    res.json({ success, authToken });
   } catch (error) {
     console.error(error.message);
-    res.status(500).json({ success, message: "internal server error " });
+    res.status(500).send(error);
   }
 };

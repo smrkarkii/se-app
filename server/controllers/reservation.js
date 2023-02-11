@@ -44,16 +44,3 @@ exports.deleteReservation = async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 };
-
-exports.updateReservation = async (req, res) => {
-  try {
-    let Reservation = Reservation.findById(req.params.id);
-    if (!Reservation) {
-      res.status(404).send("No srvice");
-    } else {
-      Reservation = await Reservation.findByIdAndUpdate(req.params.id);
-    }
-  } catch (err) {
-    res.status(500).send("Internal server error");
-  }
-};

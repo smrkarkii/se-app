@@ -14,14 +14,19 @@ exports.createService = async (req, res) => {
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
-
-  const service = new Service(req.body);
-  console.log("Creating service");
-  service.save().then((result) => {
-    res.status(200).json({
-      result,
+  try {
+    const service = new Service(req.body);
+    console.log("Creating service");
+    service.save().then((result) => {
+      res.status(200).json({
+        result,
+      });
     });
-  });
+  } catch (err) {
+    res.status(500).json({
+      Error: err,
+    });
+  }
 };
 
 exports.deleteService = async (req, res) => {
