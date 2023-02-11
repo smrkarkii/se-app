@@ -29,11 +29,15 @@ export default function ServiceForm(props) {
       starting_date: "",
       ending_date: "",
     });
-    props.showAlert("New Service Has been Added", "success");
+    window.alert("New Service Has been Added", "success");
   };
 
   const handleChange = (e) => {
     setService({ ...service, [e.target.name]: e.target.value });
+  };
+
+  const handlePhoto = (e) => {
+    setService({ ...service, picture: e.target.files[0] });
   };
   return (
     <div className="bg-white container rounded">
@@ -75,14 +79,15 @@ export default function ServiceForm(props) {
             <label for="description" className="form-label mx-2">
               Upload Picture
             </label>
-            <textarea
+            <input
               className="form-control"
               required
-              onChange={handleChange}
-              value={service.picture}
               id="picture"
               name="picture"
-            ></textarea>
+              type="file"
+              accept=".png, .jpg, .jpeg"
+              onChange={handlePhoto}
+            ></input>
           </div>
           <div className="row g-3 mt-2">
             <div className="col">

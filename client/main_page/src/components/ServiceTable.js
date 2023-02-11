@@ -21,7 +21,6 @@ export default function ServiceTable(props) {
                 deleteService(service._id);
               }}
             ></i>
-            <i className="far fa-edit mx-2"></i>
           </div>
           <p className="card-text">{service.description}</p>
           <p className="card-text">

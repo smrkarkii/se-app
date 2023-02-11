@@ -21,7 +21,6 @@ const ReservationTable = (props) => {
                 deleteReservation(reservation._id);
               }}
             ></i>
-            <i className="far fa-edit mx-2"></i>
           </div>
           <h5 className="card-title">Email: {reservation.email}</h5>
 

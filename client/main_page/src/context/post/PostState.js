@@ -107,9 +107,9 @@ const PostState = (props) => {
   const addService = async (
     title,
     description,
+    picture,
     starting_date,
-    ending_date,
-    picture
+    ending_date
   ) => {
     //API call
     const response = await fetch(`${host}/services/new`, {
@@ -119,10 +119,10 @@ const PostState = (props) => {
       },
       body: JSON.stringify({
         title,
+        picture,
         description,
         starting_date,
         ending_date,
-        picture,
       }),
     });
 
@@ -165,7 +165,7 @@ const PostState = (props) => {
   //Delete a reservation
   const deleteReservation = async (id) => {
     //API call
-    const response = await fetch(`${host}/api/reservations/delete/${id}`, {
+    const response = await fetch(`${host}/reservations/delete/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -230,7 +230,7 @@ const PostState = (props) => {
     description
   ) => {
     //API call
-    const response = await fetch(`${host}/posts/update/${id}`, {
+    const response = await fetch(`${host}/events/update/${id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

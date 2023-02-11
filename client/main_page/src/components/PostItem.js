@@ -21,7 +21,7 @@ const PostItem = (props) => {
                 deletePost(post._id);
               }}
             ></i>
-            <i className="far fa-edit mx-2"></i>
+            {/* <i className="far fa-edit mx-2"></i> */}
           </div>
           <h5 className="card-title">Type: {post.type}</h5>
 

@@ -12,6 +12,8 @@ const reserve_routes = require("./routes/reservation");
 const contact_routes = require("./routes/contact");
 var cors = require("cors");
 app.use(express.json());
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
 
 app.use(cors());
 //body-parser

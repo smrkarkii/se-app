@@ -22,7 +22,7 @@ const Login = () => {
     console.log("Verifying");
     e.preventDefault();
     let { username, password } = cred;
-    let res = await fetch("http://localhost:8000/credential/verify", {
+    let res = await fetch("http://localhost:8000/credentials/verify", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,11 +32,12 @@ const Login = () => {
         password,
       }),
     });
-    let data = res.json();
-    if (data.success) {
+    const json = await res.json();
+    console.log(json);
+    if (json.success) {
       //save the auth token and redirect
-      alert("succesful");
-      Navigate("/admin");
+      localStorage.setItem("token", json.authToken);
+      Navigate("/Next");
     } else {
       alert("invalid credentials");
     }
