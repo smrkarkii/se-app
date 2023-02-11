@@ -104,14 +104,26 @@ const PostState = (props) => {
   };
 
   //Add a service
-  const addService = async (title, description, starting_date, ending_date) => {
+  const addService = async (
+    title,
+    description,
+    starting_date,
+    ending_date,
+    picture
+  ) => {
     //API call
     const response = await fetch(`${host}/services/new`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ title, description, starting_date, ending_date }),
+      body: JSON.stringify({
+        title,
+        description,
+        starting_date,
+        ending_date,
+        picture,
+      }),
     });
 
     const service = await response.json();
@@ -134,7 +146,7 @@ const PostState = (props) => {
   //Delete a post
   const deletePost = async (id) => {
     //API call
-    const response = await fetch(`${host}/events/deleted/${id}`, {
+    const response = await fetch(`${host}/events/delete/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

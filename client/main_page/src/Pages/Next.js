@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 import qr from "./qr.PNG";
-import "./style.css";
+// import "./style.css";
 
 export default function Next() {
   return (

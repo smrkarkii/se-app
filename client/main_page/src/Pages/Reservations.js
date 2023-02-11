@@ -26,7 +26,7 @@ export default function Reservation() {
     console.log("reserving");
     e.preventDefault();
     let { name, email, date, message } = reservation;
-    let res = await fetch("http://localhost:8000/reservation/create", {
+    let res = await fetch("http://localhost:8000/reservations/new", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -88,7 +88,14 @@ export default function Reservation() {
             <div class="bf-row">
               <div class="bf-col-6">
                 <p class="p-reservation">Select Date</p>
-                <input class="input" type="date" name="date" id="date" />
+                <input
+                  class="input"
+                  type="date"
+                  name="date"
+                  id="date"
+                  value={reservation.date}
+                  onChange={inputHandler}
+                />
               </div>
             </div>
 

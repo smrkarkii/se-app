@@ -33,11 +33,12 @@ const Login = () => {
       }),
     });
     let data = res.json();
-    if (data.status === 500) {
-      window.alert("Invalid");
+    if (data.success) {
+      //save the auth token and redirect
+      alert("succesful");
+      Navigate("/admin");
     } else {
-      window.alert("successfull");
-      Navigate("/Next");
+      alert("invalid credentials");
     }
   };
   return (
