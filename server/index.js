@@ -11,6 +11,7 @@ const cred_routes = require("./routes/credential");
 const reserve_routes = require("./routes/reservation");
 const contact_routes = require("./routes/contact");
 var cors = require("cors");
+app.use(express.json());
 
 app.use(cors());
 //body-parser
@@ -19,7 +20,6 @@ mongoose.connect(process.env.MONGO_DB).then(() => {
   console.log("mongo db connected");
 });
 
-app.use("/api/auth", require("./routes/admin"));
 app.use(bodyParser.json());
 
 //routing

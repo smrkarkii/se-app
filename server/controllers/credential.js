@@ -1,19 +1,32 @@
 const Credential = require("../models/Credential");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const JWT_SECRET = "rajuisagoodb@oy";
 
 exports.createCred = async (req, res) => {
-  // let data = req.body;
-  let credential = new Credential(req.body);
-  await credential
-    .save()
-    .then(() => {
-      console.log("credential  created");
-      res.status(200).json({
-        credential,
-      });
-    })
-    .catch((e) => {
-      console.log(e);
+  try {
+    //catch a error
+
+    //Create a new credential
+    const salt = await bcrypt.genSalt(10);
+    const secPass = await bcrypt.hash(req.body.password, salt);
+
+    credential = await Credential.create({
+      username: req.body.username,
+      password: secPass,
     });
+    const data = {
+      credential: {
+        id: credential.id,
+      },
+    };
+    const authToken = jwt.sign(data, JWT_SECRET);
+
+    res.json({ authToken });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server error occured");
+  }
 };
 
 exports.getCredential = async (req, res) => {
@@ -35,12 +48,10 @@ exports.verifyCred = async (req, res) => {
     let user = await Credential.findOne({ username });
     if (!user) {
       success = false;
-      return res
-        .status(404)
-        .json({
-          success,
-          error: "Please try to login with correct credentials",
-        });
+      return res.status(404).json({
+        success,
+        error: "Please try to login with correct credentials",
+      });
     }
     const passwordCompare = password == user.password;
     if (!passwordCompare) {
