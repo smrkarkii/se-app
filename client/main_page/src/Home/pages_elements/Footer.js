@@ -17,21 +17,6 @@ const Footer = () => {
             <p className="elements">+977 01 55247490</p>
             <p className="elements">ictc@ioe.edu.np</p>
           </div>
-          <div className="flex-item-footer">
-            <h4 className="topics" style={{ color: "white" }}>
-              Follow Us
-            </h4>
-            <div className="flex-footer">
-              {social.map((socials) => {
-                const { id, url, icon } = socials;
-                return (
-                  <div key={id}>
-                    <a href= {url} style={{'color':'white'}}>{icon}</a>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
         </div>
 
         <div>

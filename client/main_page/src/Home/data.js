@@ -43,31 +43,30 @@ export const links = [
 const team = [
   {
     id: 1,
-    name: "susan smith",
-    job: "web developer",
-    image:
-      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883334/person-1_rfzshl.jpg",
+    name: "Aman Shakya",
+    job: "Assistant Professor",
+    image: "http://lict.ioe.edu.np/profile/aman/photo.jpg",
   },
   {
     id: 2,
-    name: "anna johnson",
-    job: "web designer",
+    name: "Sanjeeb Prasad Pandey",
+    job: "Assosciate Professor",
     image:
-      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883409/person-2_np9x5l.jpg",
+      "https://lict.ioe.edu.np/profile/sanjeeb/March_31_2021.fld/image002.png",
   },
   {
     id: 3,
-    name: "peter jones",
-    job: "intern",
+    name: "Basanta Joshi",
+    job: "Assistant Professor",
     image:
-      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883417/person-3_ipa0mj.jpg",
+      "https://media.licdn.com/dms/image/C5603AQHnJG1u91tJeQ/profile-displayphoto-shrink_400_400/0/1516342058771?e=1681344000&v=beta&t=mRQl_--8rSxVYooz79u-9Lf6YPqensta7ttW_gwP_cM",
   },
   {
     id: 4,
-    name: "bill anderson",
-    job: "the boss",
+    name: "Sharad Kumar Ghimire",
+    job: "Assosciate Professor",
     image:
-      "https://res.cloudinary.com/diqqf3eq2/image/upload/v1586883423/person-4_t9nxjt.jpg",
+      "https://scholar.googleusercontent.com/citations?view_op=view_photo&user=n32raPwAAAAJ&citpid=1",
   },
 ];
 export const services = [
