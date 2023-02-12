@@ -8,14 +8,38 @@ exports.getEvents = (req, res) => {
   });
 };
 
-exports.createEvent = (req, res) => {
-  const event = new Event(req.body);
-  console.log("Creating event");
-  event.save().then((result) => {
-    res.status(200).json({
-      result,
+exports.createEvent = async (req, res) => {
+  try {
+    const {
+      title,
+      type,
+      instructor,
+      participants,
+      description,
+      organizer,
+      imageUrl,
+    } = req.body;
+    // if there are errors, return bad request and the errors
+    // const errors = validationResult(req);
+    // if (!errors.isEmpty()) {
+    //   return res.status(400).json({ errors: errors.array() });
+    // }
+    const posts = new Event({
+      title,
+      description,
+      type,
+      instructor,
+      participants,
+      organizer,
+      imageUrl,
     });
-  });
+    const savedPosts = await posts.save();
+
+    res.json(savedPosts);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server error occured");
+  }
 };
 exports.deleteEvent = async (req, res) => {
   try {

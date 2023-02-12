@@ -19,6 +19,9 @@ const eventSchema = new mongoose.Schema({
   description: {
     type: String,
   },
+  imageUrl: {
+    type: String,
+  },
 });
 
 const Event = mongoose.model("Event", eventSchema);

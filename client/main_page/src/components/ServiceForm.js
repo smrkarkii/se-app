@@ -1,16 +1,18 @@
 import React, { useContext, useState } from "react";
 import postContext from "../context/post/postContext";
+import ImageUploader from "./ImageUrl";
 
 export default function ServiceForm(props) {
   const context = useContext(postContext);
   const { addService } = context;
+  const [imageUrl1, setImageUrl1] = useState("");
 
   const [service, setService] = useState({
     title: "",
     description: "",
-    picture: "",
     starting_date: "",
     ending_date: "",
+    imageUrl1: "",
   });
 
   const handleClick = (e) => {
@@ -18,34 +20,38 @@ export default function ServiceForm(props) {
     addService(
       service.title,
       service.description,
-      service.picture,
+
       service.starting_date,
-      service.ending_date
+      service.ending_date,
+      imageUrl1
     );
     setService({
       title: "",
       description: "",
-      picture: "",
+
       starting_date: "",
       ending_date: "",
     });
-    window.alert("New Service Has been Added", "success");
+  };
+  const dataFromChild = (data) => {
+    setImageUrl1(data);
   };
 
   const handleChange = (e) => {
     setService({ ...service, [e.target.name]: e.target.value });
   };
 
-  const handlePhoto = (e) => {
-    setService({ ...service, picture: e.target.files[0] });
-  };
   return (
     <div className="bg-white container rounded">
       <div className="container mt-3">
         <br></br>
         <h2 className="mb-2 text-center">Fill Service Detail</h2>
         <hr></hr>
-        <form method="POST">
+        <form
+          method="POST"
+          action="/profile-upload-multiple"
+          enctype="multipart/form-data"
+        >
           <div className=" mb-2">
             <label for="title" className="form-label mx-2">
               Service Title
@@ -75,20 +81,10 @@ export default function ServiceForm(props) {
               rows="3"
             ></textarea>
           </div>
-          <div className=" mb-2">
-            <label for="description" className="form-label mx-2">
-              Upload Picture
-            </label>
-            <input
-              className="form-control"
-              required
-              id="picture"
-              name="picture"
-              type="file"
-              accept=".png, .jpg, .jpeg"
-              onChange={handlePhoto}
-            ></input>
-          </div>
+
+          <p> Upload an image </p>
+          <ImageUploader dataFromChild={dataFromChild} />
+
           <div className="row g-3 mt-2">
             <div className="col">
               <label for="starting_date" className="mb-2">
@@ -122,9 +118,9 @@ export default function ServiceForm(props) {
           </div>
 
           <button
-            // disabled={
-            //   service.title.length < 3 || service.description.length < 5
-            // }
+            disabled={
+              service.title.length < 3 || service.description.length < 5
+            }
             className="btn btn-primary mt-3"
             onClick={handleClick}
             type="submit"

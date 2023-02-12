@@ -11,6 +11,7 @@ export default function Home() {
       <div className="banner"></div>
 
       <Intro />
+
       <Services />
       <Team />
       <Footer />

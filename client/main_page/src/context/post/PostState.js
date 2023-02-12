@@ -81,7 +81,8 @@ const PostState = (props) => {
     participants,
     instructors,
     organizer,
-    description
+    description,
+    imageUrl
   ) => {
     //API call
     const response = await fetch(`${host}/events/new`, {
@@ -96,6 +97,7 @@ const PostState = (props) => {
         instructors,
         organizer,
         description,
+        imageUrl,
       }),
     });
 
@@ -107,9 +109,9 @@ const PostState = (props) => {
   const addService = async (
     title,
     description,
-    picture,
     starting_date,
-    ending_date
+    ending_date,
+    imageUrl
   ) => {
     //API call
     const response = await fetch(`${host}/services/new`, {
@@ -119,10 +121,10 @@ const PostState = (props) => {
       },
       body: JSON.stringify({
         title,
-        picture,
         description,
         starting_date,
         ending_date,
+        imageUrl,
       }),
     });
 

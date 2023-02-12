@@ -8,14 +8,15 @@ const serviceSchema = new mongoose.Schema(
     description: {
       type: String,
     },
-    picture: {
-      type: String,
-    },
+
     starting_date: {
       type: Date,
     },
     ending_date: {
       type: Date,
+    },
+    imageUrl: {
+      type: String,
     },
   },
   { timestamps: true }

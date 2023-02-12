@@ -23,17 +23,31 @@ const PostItem = (props) => {
             ></i>
             {/* <i className="far fa-edit mx-2"></i> */}
           </div>
-          <h5 className="card-title">Type: {post.type}</h5>
+          <div className="justify-content d-flex">
+            <div>
+              <h5 className="card-title">Type: {post.type}</h5>
 
-          <p className="card-text">No. of Instructor: {post.instructors}</p>
-          <p className="card-text">No. of participants: {post.participants}</p>
-          <p className="card-text">{post.description}</p>
-          <p className="card-text">
-            <small className="text-muted">
-              By {post.organizer ? post.organizer : "Unknown"}
-              {/* on {new Date(post.date).toGMTString()} */}
-            </small>
-          </p>
+              <p className="card-text">No. of Instructor: {post.instructors}</p>
+              <p className="card-text">
+                No. of participants: {post.participants}
+              </p>
+              <p className="card-text">{post.description}</p>
+
+              <p className="card-text">
+                <small className="text-muted">
+                  By {post.organizer ? post.organizer : "Unknown"}
+                  {/* on {new Date(post.date).toGMTString()} */}
+                </small>
+              </p>
+            </div>
+            <div style={{ marginLeft: "350px" }}>
+              <img
+                src={post.imageUrl}
+                alt="im"
+                style={{ height: "250px", width: "auto" }}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
