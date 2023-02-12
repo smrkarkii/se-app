@@ -14,18 +14,26 @@ exports.createService = async (req, res) => {
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
+
   try {
-    const service = new Service(req.body);
-    console.log("Creating service");
-    service.save().then((result) => {
-      res.status(200).json({
-        result,
-      });
+    const { title, description, starting_date, ending_date, imageUrl } =
+      req.body;
+    // if there are errors, return bad request and the errors
+
+    const services = new Service({
+      title,
+      description,
+      starting_date,
+      ending_date,
+      imageUrl,
     });
-  } catch (err) {
-    res.status(500).json({
-      Error: err,
-    });
+    const savedServices = await services.save();
+
+    res.status(200).json(savedServices);
+    console.log(savedServices);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server error occured");
   }
 };
 

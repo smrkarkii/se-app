@@ -1,7 +1,9 @@
 import React, { useContext, useState } from "react";
 import postContext from "../context/post/postContext";
+import ImageUploader from "./ImageUrl";
 
 export default function PostForm(props) {
+  const [imageUrl1, setImageUrl1] = useState("");
   const context = useContext(postContext);
   const { addPost } = context;
 
@@ -12,7 +14,11 @@ export default function PostForm(props) {
     instructors: "",
     organizer: "",
     description: "",
+    imageUrl: "",
   });
+  const dataFromChild = (data) => {
+    setImageUrl1(data);
+  };
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -23,7 +29,8 @@ export default function PostForm(props) {
       post.instructors,
 
       post.organizer,
-      post.description
+      post.description,
+      imageUrl1
     );
     setPost({
       title: "",
@@ -139,6 +146,10 @@ export default function PostForm(props) {
               name="description"
               rows="3"
             ></textarea>
+          </div>
+          <div className=" mb-2">
+            <p> Upload an image </p>
+            <ImageUploader dataFromChild={dataFromChild} />
           </div>
 
           <button

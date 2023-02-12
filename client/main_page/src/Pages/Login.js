@@ -47,7 +47,7 @@ const Login = () => {
       <div class="bf-container">
         <div class="bf-body">
           <div class="bf-head">
-            <h1 class="h1">Login Form</h1>
+            <h1 class="h1">Login</h1>
           </div>
 
           <form method="POST" class="bf-body-box">

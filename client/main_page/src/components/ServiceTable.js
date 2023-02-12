@@ -22,13 +22,24 @@ export default function ServiceTable(props) {
               }}
             ></i>
           </div>
-          <p className="card-text">{service.description}</p>
-          <p className="card-text">
-            Starting From: {new Date(service.starting_date).toGMTString()}
-          </p>
-          <p className="card-text">
-            Ending Date: {new Date(service.ending_date).toGMTString()}
-          </p>
+          <div className="justify-content d-flex">
+            <div>
+              <p className="card-text">{service.description}</p>
+              <p className="card-text">
+                Starting From: {new Date(service.starting_date).toGMTString()}
+              </p>
+              <p className="card-text">
+                Ending Date: {new Date(service.ending_date).toGMTString()}
+              </p>
+            </div>
+            <div style={{ marginLeft: "350px" }}>
+              <img
+                src={service.imageUrl}
+                alt="im"
+                style={{ height: "250px", width: "auto" }}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
