@@ -3,7 +3,7 @@ import loading from "./loading.gif";
 const Spinner = () => {
   return (
     <div className="text-center">
-      <img src={loading} height="100px" width="100px" alt="loading" />
+      <img src={loading} style={{height:"auto", width:"auto"}} alt="loading" />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 const Event = require("../models/Event");
 
-exports.getEvents = (req, res) => {
+exports.getEvents = async(req, res) => {
   Event.find().then((events) => {
     res.status(200).json({
       events,
@@ -13,7 +13,7 @@ exports.createEvent = async (req, res) => {
     const {
       title,
       type,
-      instructor,
+      instructors,
       participants,
       description,
       organizer,
@@ -28,7 +28,7 @@ exports.createEvent = async (req, res) => {
       title,
       description,
       type,
-      instructor,
+      instructors,
       participants,
       organizer,
       imageUrl,

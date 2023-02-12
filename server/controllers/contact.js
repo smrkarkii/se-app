@@ -1,6 +1,6 @@
 const Contact = require("../models/contact");
 
-exports.getContacts = (req, res) => {
+exports.getContacts = async(req, res) => {
   Contact.find().then((Contacts) => {
     res.status(200).json({
       Contacts,
@@ -8,7 +8,7 @@ exports.getContacts = (req, res) => {
   });
 };
 
-exports.createContact = (req, res) => {
+exports.createContact = async(req, res) => {
   try {
     const contact = new Contact(req.body);
     console.log("Creating Contact");

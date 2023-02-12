@@ -2,10 +2,11 @@ import React, { useContext, useState } from "react";
 import postContext from "../context/post/postContext";
 import ImageUploader from "./ImageUrl";
 
-export default function ServiceForm(props) {
+export default function ServiceForm() {
   const context = useContext(postContext);
   const { addService } = context;
   const [imageUrl1, setImageUrl1] = useState("");
+  const [clicked, setClicked] = useState(false);
 
   const [service, setService] = useState({
     title: "",
@@ -16,11 +17,11 @@ export default function ServiceForm(props) {
   });
 
   const handleClick = (e) => {
+    setClicked(true);
     e.preventDefault();
     addService(
       service.title,
       service.description,
-
       service.starting_date,
       service.ending_date,
       imageUrl1
@@ -28,7 +29,6 @@ export default function ServiceForm(props) {
     setService({
       title: "",
       description: "",
-
       starting_date: "",
       ending_date: "",
     });
@@ -38,6 +38,7 @@ export default function ServiceForm(props) {
   };
 
   const handleChange = (e) => {
+    setClicked(false);
     setService({ ...service, [e.target.name]: e.target.value });
   };
 
@@ -45,7 +46,23 @@ export default function ServiceForm(props) {
     <div className="bg-white container rounded">
       <div className="container mt-3">
         <br></br>
-        <h2 className="mb-2 text-center">Fill Service Detail</h2>
+        <div className="text-center">
+          <span
+            style={{
+              backgroundColor: "#00028d",
+              borderRadius: "5px",
+              fontSize: "2rem",
+              color: "white",
+              paddingRight: "1rem",
+              paddingLeft: "1rem",
+              paddingTop: "0.5rem",
+              paddingBottom: "0.5rem",
+            }}
+            className="mb-2"
+          >
+            Fill Service Detail
+          </span>
+        </div>
         <hr></hr>
         <form
           method="POST"
@@ -53,7 +70,7 @@ export default function ServiceForm(props) {
           enctype="multipart/form-data"
         >
           <div className=" mb-2">
-            <label for="title" className="form-label mx-2">
+            <label htmlFor="title" className="form-label mx-2">
               Service Title
             </label>
             <input
@@ -68,7 +85,7 @@ export default function ServiceForm(props) {
           </div>
 
           <div className=" mb-2">
-            <label for="description" className="form-label mx-2">
+            <label htmlFor="description" className="form-label mx-2">
               Description
             </label>
             <textarea
@@ -83,11 +100,11 @@ export default function ServiceForm(props) {
           </div>
 
           <p> Upload an image </p>
-          <ImageUploader dataFromChild={dataFromChild} />
+          <ImageUploader dataFromChild={dataFromChild} clicked={clicked} />
 
           <div className="row g-3 mt-2">
             <div className="col">
-              <label for="starting_date" className="mb-2">
+              <label htmlFor="starting_date" className="mb-2">
                 Starting Date <i className="fas fa-calendar input-prefix"></i>
               </label>
               <input
@@ -102,7 +119,7 @@ export default function ServiceForm(props) {
             </div>
 
             <div className="col">
-              <label for="ending_date" className="mb-2">
+              <label htmlFor="ending_date" className="mb-2">
                 Ending Date <i className="fas fa-calendar input-prefix"></i>
               </label>
               <input
@@ -118,8 +135,13 @@ export default function ServiceForm(props) {
           </div>
 
           <button
+            style={{
+              backgroundColor: "#00028d",
+              borderRadius: "10px",
+              cursor: "pointer",
+            }}
             disabled={
-              service.title.length < 3 || service.description.length < 5
+              service.title.length < 3 || service.description.length < 20
             }
             className="btn btn-primary mt-3"
             onClick={handleClick}

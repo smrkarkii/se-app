@@ -17,8 +17,10 @@ const ReservationsSchema = new Schema({
     required: true,
   },
 
-  date: {
-    type: Date,
-  },
+  date:{
+    type:Date,
+    default:Date.now
+}
+
 });
 module.exports = mongoose.model("reservations", ReservationsSchema);

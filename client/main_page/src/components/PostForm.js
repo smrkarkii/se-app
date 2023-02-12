@@ -6,6 +6,7 @@ export default function PostForm(props) {
   const [imageUrl1, setImageUrl1] = useState("");
   const context = useContext(postContext);
   const { addPost } = context;
+  const[clicked,setClicked]=useState(false);
 
   const [post, setPost] = useState({
     title: "",
@@ -21,13 +22,13 @@ export default function PostForm(props) {
   };
 
   const handleClick = (e) => {
+    setClicked(true);
     e.preventDefault();
     addPost(
       post.title,
       post.type,
       post.participants,
       post.instructors,
-
       post.organizer,
       post.description,
       imageUrl1
@@ -35,23 +36,40 @@ export default function PostForm(props) {
     setPost({
       title: "",
       type: "",
-
       participants: "",
       instructors: "",
       organizer: "",
       description: "",
     });
     props.showAlert("New Post Has been Added", "success");
+
   };
 
   const handleChange = (e) => {
+    setClicked(false);
     setPost({ ...post, [e.target.name]: e.target.value });
   };
   return (
     <div className="bg-white container rounded">
       <div className="mt-3 container">
         <br></br>
-        <h2 className="mb-2 text-center">Fill Event Detail</h2>
+        <div className="text-center">
+          <span
+            style={{
+              backgroundColor: "#00028d",
+              borderRadius: "5px",
+              fontSize: "2rem",
+              color: "white",
+              paddingRight: "1rem",
+              paddingLeft: "1rem",
+              paddingTop: "0.5rem",
+              paddingBottom: "0.5rem",
+            }}
+            className="mb-2"
+          >
+            Fill Event Detail
+          </span>
+        </div>
         <hr></hr>
         <form>
           <div className="row g-3 mb-2">
@@ -115,12 +133,17 @@ export default function PostForm(props) {
               />
             </div>
           </div>
-
-          <div className=" mb-2">
-            <label htmlFor="organizer" className="form-label mx-2">
-              organizer
+          <div className="row g-3 mb-2">
+            <div className="col" style={{marginTop:"1.7rem"}}>
+            <p style={{marginTop:"2px"}}> Upload an image </p>
+            <ImageUploader dataFromChild={dataFromChild} clicked={clicked}/>
+            </div>
+            
+          <div className="col" style={{marginTop:"1.5rem"}}>
+            <label htmlFor="organizer" className="form-label mx-2"  >
+              Organizer
             </label>
-            <input
+            <input style={{marginTop:"-1px"}}
               type="text"
               onChange={handleChange}
               minLength={3}
@@ -130,6 +153,7 @@ export default function PostForm(props) {
               value={post.organizer}
               name="organizer"
             />
+          </div>
           </div>
 
           <div className=" mb-2">
@@ -147,12 +171,14 @@ export default function PostForm(props) {
               rows="3"
             ></textarea>
           </div>
-          <div className=" mb-2">
-            <p> Upload an image </p>
-            <ImageUploader dataFromChild={dataFromChild} />
-          </div>
+          
 
           <button
+            style={{
+              backgroundColor: "#00028d",
+              borderRadius: "10px",
+              cursor: "pointer",
+            }}
             disabled={post.title.length < 3 || post.description.length < 5}
             className="btn btn-primary mt-2"
             onClick={handleClick}

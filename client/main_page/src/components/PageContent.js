@@ -1,8 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate, Routes, Route } from "react-router-dom";
-//CSS
 import "./PageContent.css";
-//Components
 import Reservation from "./Reservation";
 import Post from "./Post";
 import Services from "./Services";
@@ -21,19 +19,24 @@ export default function PageContent() {
     services,
     getServices,
     contacts,
+    getContacts,
     reservations,
     getReservations,
   } = context;
   let navigate = useNavigate();
   useEffect(() => {
+    document.title = "ICTC - Admin"
     if (localStorage.getItem("token")) {
+      
       getServices();
       getPosts();
+      getContacts();
       getReservations();
-      // eslint-disable-next-line
+      
     } else {
       navigate("/admin/login");
     }
+    // eslint-disable-next-line
   }, []);
 
   const [alert, setAlert] = useState(null);
@@ -60,7 +63,7 @@ export default function PageContent() {
 
   return (
     <>
-      {(document.title = "ICTC - Admin")}
+      
       <div className="d-flex" id="wrapper">
         {show ? <SideBar showAlert={showAlert} /> : null}
         {/* ----------------Page Content Begins--------------- */}
@@ -165,7 +168,7 @@ export default function PageContent() {
                 position: "relative",
                 marginBottom: "1rem",
                 backgroundColor: "black",
-                height: "67vh",
+                height: "63.5vh",
               }}
             >
               <Routes>

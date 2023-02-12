@@ -21,7 +21,6 @@ export default function Reservation() {
     });
     console.log(reservation);
   };
-
   const reservePost = async (e) => {
     console.log("reserving");
     e.preventDefault();
@@ -52,13 +51,12 @@ export default function Reservation() {
   return (
     <>
       {(document.title = "ICTC - Reservation")}
-      <div className="pages-bg">
+      <div className="pages-bg" style={{marginTop:"-6rem"}}>
         <div class="bf-container">
           <div class="bf-body">
-            <div class="bf-head">
+            <div class="bf-head" style={{marginBottom:"-2rem"}}>
               <h1 class="h1">Reservation Form</h1>
             </div>
-
             <form class="bf-body-box" method="POST">
               <div class="bf-row">
                 <div class="bf-col-6">

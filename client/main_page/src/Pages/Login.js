@@ -43,16 +43,16 @@ const Login = () => {
     }
   };
   return (
-    <div className="pages-bg">
+    <div className="pages-bg" style={{marginTop:"-8rem", marginBottom:"-3rem"}}>
       <div class="bf-container">
         <div class="bf-body">
           <div class="bf-head">
             <h1 class="h1">Login</h1>
           </div>
 
-          <form method="POST" class="bf-body-box">
+          <form method="POST" class="bf-body-box" style={{marginTop:"-1rem"}}>
             <div class="bf-row">
-              <div class="bf-col-6">
+              <div class="bf-col-12">
                 <p class="p-reservation">Username</p>
                 <input
                   class="input"
@@ -66,7 +66,7 @@ const Login = () => {
                 />
               </div>
             </div>
-            <div class="bf-row">
+            <div class="bf-row" style={{marginTop:"-1rem"}}>
               <div class="bf-col-12">
                 <p class="p-reservation">Password</p>
                 <input
@@ -78,7 +78,6 @@ const Login = () => {
                   placeholder="password"
                   value={cred.password}
                   required
-                  style={{ width: "50%" }}
                 ></input>
               </div>
             </div>
