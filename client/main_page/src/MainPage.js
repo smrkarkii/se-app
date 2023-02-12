@@ -1,6 +1,7 @@
 import React from "react";
 //page elements
 import Navbar from "./Home/pages_elements/Navbar";
+import Next from "./Pages/Next";
 
 //Routes
 import Gallery from "./Pages/Gallery";
@@ -23,6 +24,7 @@ function MainPage() {
         <Route exact path="/Reservations" element={<Reservations />} />
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/login" element={<Login />} />
+        <Route exact path="/next" element={<Next />} />
       </Routes>
     </>
   );
