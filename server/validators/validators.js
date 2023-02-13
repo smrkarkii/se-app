@@ -1,10 +1,12 @@
 const { check } = require("express-validator");
 
 exports.serviceValidator = [
-  check("title").isLength({ min: 3 }).withMessage("must be longer than 3"),
+  check("title")
+    .isLength({ min: 3 })
+    .withMessage("Title must be longer than 3"),
   check("description")
     .isLength({ min: 20 })
-    .withMessage("must be longer than 20 letters"),
+    .withMessage("Description must be longer than 20 letters"),
 ];
 
 exports.userValidator = [
@@ -12,7 +14,7 @@ exports.userValidator = [
   check("email").isEmail(),
   check("password")
     .isLength({ min: 8 })
-    .withMessage("must be 8 letters or more"),
+    .withMessage("Password must be 8 letters or more"),
 ];
 exports.contactValidator = [
   check("email").isEmail().withMessage("Invalid email"),
