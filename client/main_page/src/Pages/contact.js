@@ -43,11 +43,11 @@ const Contact = () => {
       {(document.title = "ICTC - Contact")}
       <Alert alert={alert}/>
       <section className="ge-section" style={{marginTop:"7rem", borderRadius:"20px"}}>
-        <div class="contact-container" style={{marginTop:"-1rem"}}>
+        <div className="contact-container" style={{marginTop:"-1rem"}}>
           <h1 className="ge-header">Contact</h1>
           <div className="underline"></div>
           <form method="POST">
-            <label class="con" htmlFor="name">
+            <label className="con" htmlFor="name">
               Full Name
             </label>
             <input
@@ -59,7 +59,7 @@ const Contact = () => {
               value={cont.name}
             ></input>
 
-            <label class="con" htmlFor="email">
+            <label className="con" htmlFor="email">
               Email
             </label>
             <input
@@ -71,7 +71,7 @@ const Contact = () => {
               value={cont.email}
             ></input>
 
-            <label class="con" htmlFor="message">
+            <label className="con" htmlFor="message">
               Message
             </label>
             <textarea
