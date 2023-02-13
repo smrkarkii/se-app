@@ -26,8 +26,8 @@ export const links = [
   },
   {
     id: 4,
-    url: "/reservations",
-    text: "reservations",
+    url: "/servicefront",
+    text: "Services",
   },
   {
     id: 5,
@@ -36,10 +36,17 @@ export const links = [
   },
   {
     id: 6,
+    url: "/reservations",
+    text: "reservations",
+  },
+
+  {
+    id: 7,
     url: "/login",
     text: <FaSignInAlt />,
   },
 ];
+
 const team = [
   {
     id: 1,
