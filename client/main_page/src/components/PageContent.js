@@ -10,6 +10,8 @@ import Alert from "./Alert";
 import ServiceForm from "./ServiceForm";
 import Contact from "./Contact";
 import postContext from "../context/post/postContext";
+import AddAdmin from "./AddAdmin";
+import AddRegisterUser from "./AddRegisterUser";
 
 export default function PageContent() {
   const context = useContext(postContext);
@@ -171,11 +173,15 @@ export default function PageContent() {
                 height: "63.5vh",
               }}
             >
+              <div style={{display: "flex", justifyContent: "center"}}>
               <Routes>
                 <Route path="/post" element={<Post />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/reservation" element={<Reservation />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/signup" element={<AddAdmin />} />
+                <Route path="/registeruser" element={<AddRegisterUser />} />
+
                 <Route
                   path="/postform"
                   element={<PostForm showAlert={showAlert} />}
@@ -185,6 +191,7 @@ export default function PageContent() {
                   element={<ServiceForm showAlert={showAlert} />}
                 />
               </Routes>
+              </div>
             </div>
           </div>
         </div>

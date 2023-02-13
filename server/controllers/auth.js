@@ -9,14 +9,17 @@ const JWT_SECRET = "rajuisagoodb@oy";
 
 // ROUTE 1: create a user using: POST "/api/auth/createUser". No login Required
 exports.createUser = async (req, res) => {
-  let errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    res.json({ errors: errors.array() });
-  }
   //check whether the user with the same email exist already
   try {
     //catch a error
+  const {name, password } = req.body;
 
+  if (password.length < 8) {
+    return res.status(400).json({ message: "Password must be at least 8 characters long" });
+  }
+  if (name.length<3 || name.length>20){
+    return res.status(400).json({ message: "Name must be at least 3 characters long" });
+  }
     let user = await User.findOne({ email: req.body.email });
     if (user) {
       return res
@@ -28,8 +31,8 @@ exports.createUser = async (req, res) => {
     const secPass = await bcrypt.hash(req.body.password, salt);
 
     user = await User.create({
-      email: req.body.email,
       name: req.body.name,
+      email: req.body.email,      
       password: secPass,
     });
     const data = {
@@ -39,7 +42,8 @@ exports.createUser = async (req, res) => {
     };
     const authToken = jwt.sign(data, JWT_SECRET);
 
-    res.json({ authToken });
+    success=true;
+    res.json({success, authToken});
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Internal Server error occured");
