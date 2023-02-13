@@ -109,8 +109,7 @@ const PostState = (props) => {
   const addService = async (
     title,
     description,
-    starting_date,
-    ending_date,
+
     imageUrl
   ) => {
     //API call
@@ -122,14 +121,14 @@ const PostState = (props) => {
       body: JSON.stringify({
         title,
         description,
-        starting_date,
-        ending_date,
+
         imageUrl,
       }),
     });
 
     const service = await response.json();
     setServices(services.concat(service));
+    return service;
   };
   const addContact = async (name, email, message) => {
     //API call
@@ -143,6 +142,7 @@ const PostState = (props) => {
 
     const contact = await response.json();
     setContacts(contacts.concat(contact));
+    return contact;
   };
 
   //Delete a post

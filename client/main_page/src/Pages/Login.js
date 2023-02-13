@@ -1,7 +1,8 @@
 import "./style.css";
 import { useState, React } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
   const Navigate = useNavigate();
   const [cred, setCred] = useState({
@@ -36,21 +37,38 @@ const Login = () => {
     console.log(json);
     if (json.success) {
       //save the auth token and redirect
+
       localStorage.setItem("token", json.authToken);
-      Navigate("/Next");
+
+      toast.success("Login Successful!", {
+        position: toast.POSITION.TOP_RIGHT,
+        className: "toast-message",
+      });
+
+      Navigate("/Next", setTimeout(5000));
     } else {
-      alert("invalid credentials");
+      toast.error("Invalid Credential", {
+        className: "toast-message",
+        timeOut: "2000",
+      });
     }
   };
   return (
-    <div className="pages-bg" style={{marginTop:"-8rem", marginBottom:"-3rem"}}>
+    <div
+      className="pages-bg"
+      style={{ marginTop: "-8rem", marginBottom: "-3rem" }}
+    >
       <div class="bf-container">
         <div class="bf-body">
           <div class="bf-head">
             <h1 class="h1">Login</h1>
           </div>
 
-          <form method="POST" class="bf-body-box" style={{marginTop:"-1rem"}}>
+          <form
+            method="POST"
+            class="bf-body-box"
+            style={{ marginTop: "-1rem" }}
+          >
             <div class="bf-row">
               <div class="bf-col-12">
                 <p class="p-reservation">Username</p>
@@ -66,7 +84,7 @@ const Login = () => {
                 />
               </div>
             </div>
-            <div class="bf-row" style={{marginTop:"-1rem"}}>
+            <div class="bf-row" style={{ marginTop: "-1rem" }}>
               <div class="bf-col-12">
                 <p class="p-reservation">Password</p>
                 <input

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import postContext from "../context/post/postContext";
 import ImageUploader from "./ImageUrl";
+import { toast } from "react-toastify";
 
 export default function ServiceForm() {
   const context = useContext(postContext);
@@ -11,27 +12,31 @@ export default function ServiceForm() {
   const [service, setService] = useState({
     title: "",
     description: "",
-    starting_date: "",
-    ending_date: "",
+
     imageUrl1: "",
   });
 
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     setClicked(true);
     e.preventDefault();
-    addService(
+    let resJson = await addService(
       service.title,
       service.description,
-      service.starting_date,
-      service.ending_date,
+
       imageUrl1
     );
-    setService({
-      title: "",
-      description: "",
-      starting_date: "",
-      ending_date: "",
-    });
+    if (resJson.errors && resJson.errors.length > 0) {
+      resJson.errors.forEach((error) => {
+        toast.error(error.msg);
+      });
+    }
+    if (resJson.result) {
+      toast.success("Service added");
+      setService({
+        title: "",
+        description: "",
+      });
+    }
   };
   const dataFromChild = (data) => {
     setImageUrl1(data);
@@ -102,47 +107,12 @@ export default function ServiceForm() {
           <p> Upload an image </p>
           <ImageUploader dataFromChild={dataFromChild} clicked={clicked} />
 
-          <div className="row g-3 mt-2">
-            <div className="col">
-              <label htmlFor="starting_date" className="mb-2">
-                Starting Date <i className="fas fa-calendar input-prefix"></i>
-              </label>
-              <input
-                placeholder="Select date"
-                onChange={handleChange}
-                type="date"
-                id="starting_date"
-                value={service.starting_date}
-                name="starting_date"
-                className="form-control"
-              />
-            </div>
-
-            <div className="col">
-              <label htmlFor="ending_date" className="mb-2">
-                Ending Date <i className="fas fa-calendar input-prefix"></i>
-              </label>
-              <input
-                placeholder="Select date"
-                onChange={handleChange}
-                type="date"
-                id="ending_date"
-                value={service.ending_date}
-                name="ending_date"
-                className="form-control"
-              />
-            </div>
-          </div>
-
           <button
             style={{
               backgroundColor: "#00028d",
               borderRadius: "10px",
               cursor: "pointer",
             }}
-            disabled={
-              service.title.length < 3 || service.description.length < 20
-            }
             className="btn btn-primary mt-3"
             onClick={handleClick}
             type="submit"

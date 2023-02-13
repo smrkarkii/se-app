@@ -2,7 +2,7 @@ import "./style.css";
 import { useState } from "react";
 import postContext from "../context/post/postContext";
 import { useContext } from "react";
-import Alert from "../components/Alert";
+import { toast } from "react-toastify";
 
 const Contact = () => {
   const context = useContext(postContext);
@@ -21,29 +21,31 @@ const Contact = () => {
     });
     console.log(cont);
   };
-  const [alert, setAlert] = useState(null);
-  const showAlert = (message, type) => {
-    setAlert({
-      msg: message,
-      type: type,
-    });
-    setTimeout(() => {
-      setAlert(null);
-    }, 4000);
-  };
-  
-  const handleClick = (e) => {
+
+  const handleClick = async (e) => {
     e.preventDefault();
-    addContact(cont.name, cont.email, cont.message);
-    setCont({ name: "", email: "", message: "" });
-    showAlert("New Contact Has been Added", "success");
+    let resJson = await addContact(cont.name, cont.email, cont.message);
+
+    if (resJson.errors && resJson.errors.length > 0) {
+      resJson.errors.forEach((error) => {
+        toast.error(error.msg);
+      });
+    }
+    if (resJson.result) {
+      toast.success("Reservation Successful");
+      setCont({ name: "", email: "", message: "" });
+    }
   };
+
   return (
     <>
       {(document.title = "ICTC - Contact")}
-      <Alert alert={alert}/>
-      <section className="ge-section" style={{marginTop:"7rem", borderRadius:"20px"}}>
-        <div className="contact-container" style={{marginTop:"-1rem"}}>
+
+      <section
+        className="ge-section"
+        style={{ marginTop: "7rem", borderRadius: "20px" }}
+      >
+        <div className="contact-container" style={{ marginTop: "-1rem" }}>
           <h1 className="ge-header">Contact</h1>
           <div className="underline"></div>
           <form method="POST">

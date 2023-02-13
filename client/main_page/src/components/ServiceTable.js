@@ -10,23 +10,27 @@ export default function ServiceTable(props) {
     <div className="container">
       <div className="card my-3">
         <div className="card-body">
-        <div
+          <div
             className="align-items-center"
             style={{ display: "flex", justifyContent: "space-between" }}
           >
             <div>
-                <p
-                  style={{ fontSize: "24px", marginBottom: "-2.5rem" ,marginLeft:"-0rem" }}
-                  className="card-title"
-                >
-                  <b>Service Title: </b>
-                  {service.title}
-                </p>
-             
+              <p
+                style={{
+                  fontSize: "24px",
+                  marginBottom: "-2.5rem",
+                  marginLeft: "-0rem",
+                }}
+                className="card-title"
+              >
+                <b>Service Title: </b>
+                {service.title}
+              </p>
             </div>
 
             <div>
-              <i style={{cursor:"pointer"}}
+              <i
+                style={{ cursor: "pointer" }}
                 className="fa fa-solid fa-trash mx-2"
                 onClick={() => {
                   deleteService(service._id);
@@ -34,16 +38,22 @@ export default function ServiceTable(props) {
               ></i>
             </div>
           </div>
-          <div className="align-items-center"
-            style={{ display: "flex", justifyContent: "space-between" }}>
-            <div style={{marginTop:"-4rem"}}>
-            <p style={{fontSize:"18px", marginTop:"1rem",marginLeft:"-0rem"}} className="card-text"><b>Description: </b>{service.description}</p>
-          <p style={{fontSize:"18px", marginTop:"1rem",marginLeft:"-0rem"}} className="card-text">
-            <b>Starting From:</b> {new Date(service.starting_date).toGMTString()}
-          </p>
-          <p style={{fontSize:"18px", marginTop:"1rem",marginLeft:"-0rem"}} className="card-text">
-            <b>Ending Date:</b> {new Date(service.ending_date).toGMTString()}
-          </p>
+          <div
+            className="align-items-center"
+            style={{ display: "flex", justifyContent: "space-between" }}
+          >
+            <div style={{ marginTop: "-4rem" }}>
+              <p
+                style={{
+                  fontSize: "18px",
+                  marginTop: "1rem",
+                  marginLeft: "-0rem",
+                }}
+                className="card-text"
+              >
+                <b>Description: </b>
+                {service.description}
+              </p>
             </div>
             <div>
               <img

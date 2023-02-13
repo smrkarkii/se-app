@@ -2,6 +2,9 @@ import React from "react";
 import "./style.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
+// toast.configure();
 
 export default function Reservation() {
   const Navigate = useNavigate();
@@ -37,13 +40,15 @@ export default function Reservation() {
         date,
       }),
     });
-    let data = res.json();
-    if (data.status === 500) {
-      window.alert("Invalid");
-    } else {
-      window.alert(
-        "Reservation has been requested. You will be mailed login credentials to proceed reservation."
-      );
+    let resJson = await res.json();
+
+    if (resJson.errors && resJson.errors.length > 0) {
+      resJson.errors.forEach((error) => {
+        toast.error(error.msg);
+      });
+    }
+    if (resJson.result) {
+      toast.success("Reservation Successful");
       Navigate("/login");
     }
   };
@@ -51,10 +56,10 @@ export default function Reservation() {
   return (
     <>
       {(document.title = "ICTC - Reservation")}
-      <div className="pages-bg" style={{marginTop:"-6rem"}}>
+      <div className="pages-bg" style={{ marginTop: "-6rem" }}>
         <div class="bf-container">
           <div class="bf-body">
-            <div class="bf-head" style={{marginBottom:"-2rem"}}>
+            <div class="bf-head" style={{ marginBottom: "-2rem" }}>
               <h1 class="h1">Reservation Form</h1>
             </div>
             <form class="bf-body-box" method="POST">
