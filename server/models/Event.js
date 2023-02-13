@@ -22,6 +22,11 @@ const eventSchema = new mongoose.Schema({
   imageUrl: {
     type: String,
   },
+  date:{
+    type:Date,
+    default:Date.now
+}
+
 });
 
 const Event = mongoose.model("Event", eventSchema);

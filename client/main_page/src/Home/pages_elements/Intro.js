@@ -3,7 +3,7 @@ import "../styles/page_style.css";
 const Intro = () => {
   return (
     <section>
-        <div class="flex-intro">
+        <div className="flex-intro">
           <div className="flex-item-intro">
             <h4> Introduction</h4>
           </div>

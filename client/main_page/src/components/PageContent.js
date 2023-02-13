@@ -1,8 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate, Routes, Route } from "react-router-dom";
-//CSS
 import "./PageContent.css";
-//Components
 import Reservation from "./Reservation";
 import Post from "./Post";
 import Services from "./Services";
@@ -12,6 +10,8 @@ import Alert from "./Alert";
 import ServiceForm from "./ServiceForm";
 import Contact from "./Contact";
 import postContext from "../context/post/postContext";
+import AddAdmin from "./AddAdmin";
+import AddRegisterUser from "./AddRegisterUser";
 
 export default function PageContent() {
   const context = useContext(postContext);
@@ -21,19 +21,24 @@ export default function PageContent() {
     services,
     getServices,
     contacts,
+    getContacts,
     reservations,
     getReservations,
   } = context;
   let navigate = useNavigate();
   useEffect(() => {
+    document.title = "ICTC - Admin"
     if (localStorage.getItem("token")) {
+      
       getServices();
       getPosts();
+      getContacts();
       getReservations();
-      // eslint-disable-next-line
+      
     } else {
       navigate("/admin/login");
     }
+    // eslint-disable-next-line
   }, []);
 
   const [alert, setAlert] = useState(null);
@@ -60,7 +65,7 @@ export default function PageContent() {
 
   return (
     <>
-      {(document.title = "ICTC - Admin")}
+      
       <div className="d-flex" id="wrapper">
         {show ? <SideBar showAlert={showAlert} /> : null}
         {/* ----------------Page Content Begins--------------- */}
@@ -165,14 +170,18 @@ export default function PageContent() {
                 position: "relative",
                 marginBottom: "1rem",
                 backgroundColor: "black",
-                height: "67vh",
+                height: "63.5vh",
               }}
             >
+              <div style={{display: "flex", justifyContent: "center"}}>
               <Routes>
                 <Route path="/post" element={<Post />} />
                 <Route path="/services" element={<Services />} />
                 <Route path="/reservation" element={<Reservation />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/signup" element={<AddAdmin />} />
+                <Route path="/registeruser" element={<AddRegisterUser />} />
+
                 <Route
                   path="/postform"
                   element={<PostForm showAlert={showAlert} />}
@@ -182,6 +191,7 @@ export default function PageContent() {
                   element={<ServiceForm showAlert={showAlert} />}
                 />
               </Routes>
+              </div>
             </div>
           </div>
         </div>

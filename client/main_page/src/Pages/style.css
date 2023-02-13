@@ -3,7 +3,18 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+.back {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  height: 50px;
+  width: 30%;
+  border-radius: 5px;
+}
+.scantopay {
+  color: rgb(0, 0, 161);
+  font-size: 2rem;
+}
 .h1 {
   font-size: 40px;
   color: #fff;
@@ -23,14 +34,15 @@
 .input,
 .textarea {
   width: 100%;
-  border: none;
-  outline: none;
-  padding: 10px;
-  margin-top: 5px;
-  resize: none;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
   background-color: #1221a511;
   color: rgba(44, 37, 37, 0.808);
-  border-radius: 10px;
 }
 .p-reservation {
   color: #1221a5d3;
@@ -168,6 +180,7 @@ form {
   .ge-container {
     grid-template-columns: auto auto;
   }
+
   .ge-section {
     margin-top: 10%;
   }

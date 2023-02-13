@@ -12,6 +12,8 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 
 import { Route, Routes } from "react-router-dom";
+import Footer from "./Home/pages_elements/Footer";
+import DetailEvents from "./Pages/DetailEvents";
 
 function MainPage() {
   return (
@@ -25,7 +27,9 @@ function MainPage() {
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/next" element={<Next />} />
+        <Route path='/empdetails/:id' element={<DetailEvents/>}></Route>  
       </Routes>
+      <Footer/>
     </>
   );
 }

@@ -10,41 +10,108 @@ const PostItem = (props) => {
     <div className="container">
       <div className="card my-3">
         <div className="card-body">
-          <div className="d-flex align-items-center">
-            <b>
-              <h3 className="card-title">{post.title}</h3>
-            </b>
-
-            <i
-              className="fa fa-solid fa-trash mx-2"
-              onClick={() => {
-                deletePost(post._id);
-              }}
-            ></i>
-            {/* <i className="far fa-edit mx-2"></i> */}
-          </div>
-          <div className="justify-content d-flex">
+          <div
+            className="align-items-center"
+            style={{ display: "flex", justifyContent: "space-between" }}
+          >
             <div>
-              <h5 className="card-title">Type: {post.type}</h5>
-
-              <p className="card-text">No. of Instructor: {post.instructors}</p>
-              <p className="card-text">
-                No. of participants: {post.participants}
+              <p
+                style={{
+                  fontSize: "24px",
+                  marginBottom: "-1.5rem",
+                  marginLeft: "-0rem",
+                }}
+                className="card-title"
+              >
+                <b>Event Title:</b> {post.title}
               </p>
-              <p className="card-text">{post.description}</p>
+            </div>
+            <div>
+              <i
+                style={{ cursor: "pointer" }}
+                className="fa fa-solid fa-trash mx-2"
+                onClick={() => {
+                  deletePost(post._id);
+                }}
+              ></i>
+            </div>
+          </div>
+          <div
+            className="align-items-center"
+            style={{ display: "flex", justifyContent: "space-between" }}
+          >
+            <div>
+              <p
+                style={{
+                  fontSize: "18px",
+                  marginTop: "1rem",
+                  marginLeft: "-0rem",
+                }}
+                className="card-title"
+              >
+                <b>Type: </b>
+                {post.type}
+              </p>
 
-              <p className="card-text">
-                <small className="text-muted">
-                  By {post.organizer ? post.organizer : "Unknown"}
-                  {/* on {new Date(post.date).toGMTString()} */}
+              <p
+                style={{
+                  fontSize: "18px",
+                  marginTop: "1rem",
+                  marginLeft: "-0rem",
+                }}
+                className="card-text"
+              >
+                <b>No. of instructors: </b>
+                {post.instructors}
+              </p>
+              <p
+                style={{
+                  fontSize: "18px",
+                  marginTop: "1rem",
+                  marginLeft: "-0rem",
+                }}
+                className="card-text"
+              >
+                <b>No. of participants: </b>
+                {post.participants}
+              </p>
+              <p
+                style={{
+                  fontSize: "18px",
+                  marginTop: "1rem",
+                  marginLeft: "-0rem",
+                }}
+                className="card-text"
+              >
+                <b>Description: </b>
+                {post.description}
+              </p>
+              <p
+                style={{
+                  fontSize: "18px",
+                  marginTop: "1rem",
+                  marginLeft: "-0rem",
+                }}
+                className="card-text"
+              >
+                <small
+                  style={{
+                    fontSize: "12px",
+                    marginTop: "1rem",
+                    marginLeft: "-0rem",
+                  }}
+                  className="text-muted"
+                >
+                  By <b>{post.organizer ? post.organizer : "Unknown"}</b>
+                  &nbsp;on <b>{new Date(post.date).toGMTString()}</b>
                 </small>
               </p>
             </div>
-            <div style={{ marginLeft: "350px" }}>
+            <div>
               <img
                 src={post.imageUrl}
                 alt="im"
-                style={{ height: "250px", width: "auto" }}
+                style={{ height: "250px", width: "320px" }}
               />
             </div>
           </div>

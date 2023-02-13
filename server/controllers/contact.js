@@ -1,6 +1,7 @@
 const Contact = require("../models/contact");
+const { validationResult } = require("express-validator");
 
-exports.getContacts = (req, res) => {
+exports.getContacts = async (req, res) => {
   Contact.find().then((Contacts) => {
     res.status(200).json({
       Contacts,
@@ -8,7 +9,12 @@ exports.getContacts = (req, res) => {
   });
 };
 
-exports.createContact = (req, res) => {
+exports.createContact = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    console.log(errors.array());
+    return res.status(422).json({ errors: errors.array() });
+  }
   try {
     const contact = new Contact(req.body);
     console.log("Creating Contact");
@@ -19,13 +25,13 @@ exports.createContact = (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.status(500).send("Internal Server Error");
+    res.status(500).send(err);
   }
 };
 
 exports.deleteContact = async (req, res) => {
   try {
-    let contact = contact.findById(req.params.id);
+    let contact = Contact.findById(req.params.id);
     if (!contact) {
       res.send("No Contact found");
     } else {

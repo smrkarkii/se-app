@@ -14,3 +14,13 @@ exports.userValidator = [
     .isLength({ min: 8 })
     .withMessage("must be 8 letters or more"),
 ];
+exports.contactValidator = [
+  check("email").isEmail().withMessage("Must be valid email"),
+];
+exports.reservationValidator = [
+  check("email").isEmail().withMessage("Must be valid email"),
+  check("name").isEmpty(),
+  check("email").isEmpty(),
+  check("date").isEmpty(),
+  check("message").isEmpty(),
+];

@@ -1,4 +1,3 @@
-import { social } from "../data";
 const Footer = () => {
   return (
     <>
@@ -22,7 +21,7 @@ const Footer = () => {
         <div>
           <p
             className="Copyright"
-            style={{ margin: "0", "text-align": "center" }}
+            style={{ margin: "0", textAlign: "center" }}
           >
             Copyright © 2021 - ICTC, IOE
           </p>

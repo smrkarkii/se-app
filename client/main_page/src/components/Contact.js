@@ -20,8 +20,8 @@ const Contact = () => {
     <>
       <div className="bg-white container rounded">
         <div className="container">
-          <div className="mt-3 d-flex justify-content-between bg-white align-items-center">
-            <h2 className="mx-2 my-2">Contacts </h2>
+        <div className="mt-3 d-flex justify-content-between bg-white align-items-center">
+        <span style={{backgroundColor:"#00028d",borderRadius:"5px",fontSize:"2rem", color:"white",paddingRight:"1rem", paddingLeft:"1rem", paddingTop:"0.5rem", paddingBottom:"0.5rem"}} className="mx-2 my-2">Recent Contacts </span>
           </div>
         </div>
         <hr></hr>

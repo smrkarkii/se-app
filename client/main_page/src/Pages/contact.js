@@ -2,6 +2,7 @@ import "./style.css";
 import { useState } from "react";
 import postContext from "../context/post/postContext";
 import { useContext } from "react";
+import Alert from "../components/Alert";
 
 const Contact = () => {
   const context = useContext(postContext);
@@ -20,21 +21,33 @@ const Contact = () => {
     });
     console.log(cont);
   };
+  const [alert, setAlert] = useState(null);
+  const showAlert = (message, type) => {
+    setAlert({
+      msg: message,
+      type: type,
+    });
+    setTimeout(() => {
+      setAlert(null);
+    }, 4000);
+  };
+  
   const handleClick = (e) => {
     e.preventDefault();
     addContact(cont.name, cont.email, cont.message);
     setCont({ name: "", email: "", message: "" });
-    // props.showAlert("New Service Has been Added", "success");
+    showAlert("New Contact Has been Added", "success");
   };
   return (
     <>
       {(document.title = "ICTC - Contact")}
-      <section className="ge-section">
-        <div class="contact-container">
+      <Alert alert={alert}/>
+      <section className="ge-section" style={{marginTop:"7rem", borderRadius:"20px"}}>
+        <div className="contact-container" style={{marginTop:"-1rem"}}>
           <h1 className="ge-header">Contact</h1>
           <div className="underline"></div>
           <form method="POST">
-            <label class="con" for="fname">
+            <label className="con" htmlFor="name">
               Full Name
             </label>
             <input
@@ -46,7 +59,7 @@ const Contact = () => {
               value={cont.name}
             ></input>
 
-            <label class="con" for="lname">
+            <label className="con" htmlFor="email">
               Email
             </label>
             <input
@@ -58,7 +71,7 @@ const Contact = () => {
               value={cont.email}
             ></input>
 
-            <label class="con" for="subject">
+            <label className="con" htmlFor="message">
               Message
             </label>
             <textarea

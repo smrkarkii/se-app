@@ -51,6 +51,18 @@ export default function SideBar() {
         >
           <i className="fas fa-solid fa-calendar-check me-2"></i>Reservations
         </Link>
+        <Link
+          to="/admin/signup"
+          className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        >
+          <i className="fas fa-solid fa-calendar-check me-2"></i>Add an Admin
+        </Link>
+        <Link
+          to="/admin/registeruser"
+          className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        >
+          <i className="fas fa-solid fa-calendar-check me-2"></i>Register a User
+        </Link>
         {!localStorage.getItem("token") ? (
           <Link
             to="/admin/login"
