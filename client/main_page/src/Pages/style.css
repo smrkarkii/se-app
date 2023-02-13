@@ -3,7 +3,18 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+.back {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  height: 50px;
+  width: 30%;
+  border-radius: 5px;
+}
+.scantopay {
+  color: rgb(0, 0, 161);
+  font-size: 2rem;
+}
 .h1 {
   font-size: 40px;
   color: #fff;
@@ -169,6 +180,7 @@ form {
   .ge-container {
     grid-template-columns: auto auto;
   }
+
   .ge-section {
     margin-top: 10%;
   }

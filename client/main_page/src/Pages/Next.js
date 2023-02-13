@@ -6,7 +6,9 @@ export default function Next() {
   return (
     <center>
       <img class="qrimage" src={qr} alt="qr" />
-      <h1 class="h1">Scan to Pay</h1>
+      <div className="back">
+        <h1 class="scantopay">Scan to Pay </h1>
+      </div>
     </center>
   );
 }
