@@ -10,17 +10,18 @@ exports.getReservations = async (req, res) => {
 };
 
 exports.createReservation = async (req, res) => {
-  // const errors = validationResult(req);
-  // if (!errors.isEmpty()) {
-  //   console.log(errors.array());
-  //   return res.status(422).json({ errors: errors.array() });
-  // }
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    console.log(errors.array());
+    return res.status(422).json({ errors: errors.array() });
+  }
   try {
     const reservation = new Reservation(req.body);
     console.log("Creating reservation");
     reservation.save().then((result) => {
       res.status(200).json({
         result,
+        errors,
       });
     });
   } catch (err) {

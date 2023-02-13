@@ -15,12 +15,13 @@ exports.userValidator = [
     .withMessage("must be 8 letters or more"),
 ];
 exports.contactValidator = [
-  check("email").isEmail().withMessage("Must be valid email"),
+  check("email").isEmail().withMessage("Invalid email"),
+  check("message").notEmpty().withMessage("Message field must not be empty"),
+  check("name").notEmpty().withMessage("Name field must not be empty"),
 ];
 exports.reservationValidator = [
   check("email").isEmail().withMessage("Must be valid email"),
-  check("name").isEmpty(),
-  check("email").isEmpty(),
-  check("date").isEmpty(),
-  check("message").isEmpty(),
+  check("name").notEmpty().withMessage("Name field must not be empty"),
+  check("date").notEmpty().withMessage("Date field must not be empty"),
+  check("message").notEmpty().withMessage("Message field must not be empty"),
 ];
