@@ -1,8 +1,10 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
+
 dotenv.config();
 const event_routes = require("./routes/event");
 const service_routes = require("./routes/service");
@@ -10,6 +12,7 @@ const user_routes = require("./routes/user");
 const cred_routes = require("./routes/credential");
 const reserve_routes = require("./routes/reservation");
 const contact_routes = require("./routes/contact");
+const drive_routes = require("./googledrive");
 var cors = require("cors");
 app.use(express.json());
 
@@ -29,6 +32,7 @@ app.use("/", user_routes);
 app.use("/", cred_routes);
 app.use("/", reserve_routes);
 app.use("/", contact_routes);
+app.use("/", drive_routes);
 //app.use("/", )
 
 //database connecting to mongo db
