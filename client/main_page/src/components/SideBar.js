@@ -52,6 +52,13 @@ export default function SideBar() {
           <i className="fas fa-solid fa-calendar-check me-2"></i>Reservations
         </Link>
         <Link
+          to="/admin/calendar"
+          className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+        >
+          <i className="fas fa-solid fa-calendar-check me-2"></i>Manage booked
+          date
+        </Link>
+        <Link
           to="/admin/signup"
           className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
         >

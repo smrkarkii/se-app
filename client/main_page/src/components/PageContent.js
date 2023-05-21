@@ -12,6 +12,7 @@ import Contact from "./Contact";
 import postContext from "../context/post/postContext";
 import AddAdmin from "./AddAdmin";
 import AddRegisterUser from "./AddRegisterUser";
+import ManageCalendar from "./ManageCalendar";
 
 export default function PageContent() {
   const context = useContext(postContext);
@@ -24,17 +25,20 @@ export default function PageContent() {
     getContacts,
     reservations,
     getReservations,
+    bookDate,
+    getBookedDates,
+    bookings,
+    unbookdate,
   } = context;
   let navigate = useNavigate();
   useEffect(() => {
-    document.title = "ICTC - Admin"
+    document.title = "ICTC - Admin";
     if (localStorage.getItem("token")) {
-      
       getServices();
       getPosts();
       getContacts();
       getReservations();
-      
+      getBookedDates();
     } else {
       navigate("/admin/login");
     }
@@ -65,7 +69,6 @@ export default function PageContent() {
 
   return (
     <>
-      
       <div className="d-flex" id="wrapper">
         {show ? <SideBar showAlert={showAlert} /> : null}
         {/* ----------------Page Content Begins--------------- */}
@@ -173,24 +176,25 @@ export default function PageContent() {
                 height: "63.5vh",
               }}
             >
-              <div style={{display: "flex", justifyContent: "center"}}>
-              <Routes>
-                <Route path="/post" element={<Post />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/reservation" element={<Reservation />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/signup" element={<AddAdmin />} />
-                <Route path="/registeruser" element={<AddRegisterUser />} />
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <Routes>
+                  <Route path="/post" element={<Post />} />
+                  <Route path="/services" element={<Services />} />
+                  <Route path="/reservation" element={<Reservation />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/signup" element={<AddAdmin />} />
+                  <Route path="/registeruser" element={<AddRegisterUser />} />
+                  <Route path="/calendar" element={<ManageCalendar />} />
 
-                <Route
-                  path="/postform"
-                  element={<PostForm showAlert={showAlert} />}
-                />
-                <Route
-                  path="/serviceform"
-                  element={<ServiceForm showAlert={showAlert} />}
-                />
-              </Routes>
+                  <Route
+                    path="/postform"
+                    element={<PostForm showAlert={showAlert} />}
+                  />
+                  <Route
+                    path="/serviceform"
+                    element={<ServiceForm showAlert={showAlert} />}
+                  />
+                </Routes>
               </div>
             </div>
           </div>

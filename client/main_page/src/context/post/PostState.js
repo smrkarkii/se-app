@@ -7,11 +7,13 @@ const PostState = (props) => {
   const servicesInitial = [];
   const contactsInitial = [];
   const reservationsInitial = [];
+  const bookingsInitial = [];
 
   const [posts, setPosts] = useState(postsInitial);
   const [services, setServices] = useState(servicesInitial);
   const [contacts, setContacts] = useState(contactsInitial);
   const [reservations, setReservations] = useState(reservationsInitial);
+  const [bookings, setBookings] = useState(bookingsInitial);
   const [loading, setLoading] = useState(true);
   //get all posts
   const getPosts = async () => {
@@ -27,6 +29,21 @@ const PostState = (props) => {
     setLoading(false);
     console.log(json);
     setPosts(json.events);
+  };
+  //get reserveds/booked
+  const getBookedDates = async () => {
+    //API call
+    setLoading(true);
+    const response = await fetch(`${host}/bookedDates`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const json = await response.json();
+    setLoading(false);
+    console.log(json);
+    setBookings(json);
   };
 
   //get all reservations
@@ -130,6 +147,23 @@ const PostState = (props) => {
     setServices(services.concat(service));
     return service;
   };
+  //book dates
+  const bookDate = async (date) => {
+    //API call
+    const response = await fetch(`${host}/bookdate`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        date,
+      }),
+    });
+
+    const bookingss = await response.json();
+    setBookings(bookings.concat(bookingss));
+    return bookings;
+  };
   const addContact = async (name, email, message) => {
     //API call
     const response = await fetch(`${host}/contacts/new`, {
@@ -158,10 +192,28 @@ const PostState = (props) => {
     console.log(json);
 
     // Logic to delete in client
-    const newPosts = posts.filter((post) => {
+    const newBookedDates = posts.filter((post) => {
       return post._id !== id;
     });
-    setPosts(newPosts);
+    setPosts(newBookedDates);
+  };
+  //unbook
+  const unbookdate = async (id) => {
+    //API call
+    const response = await fetch(`${host}/unbook/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const json = response.json();
+    console.log(json);
+
+    // Logic to delete in client
+    const newBookedDates = bookings.filter((bookings) => {
+      return bookings._id !== id;
+    });
+    setBookings(newBookedDates);
   };
 
   //Delete a reservation
@@ -271,6 +323,7 @@ const PostState = (props) => {
         services,
         contacts,
         reservations,
+        bookings,
         setContacts,
         setPosts,
         setServices,
@@ -286,6 +339,9 @@ const PostState = (props) => {
         getServices,
         getContacts,
         getReservations,
+        getBookedDates,
+        bookDate,
+        unbookdate,
       }}
     >
       {props.children}
