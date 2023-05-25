@@ -13,7 +13,7 @@ const PostState = (props) => {
   const [services, setServices] = useState(servicesInitial);
   const [contacts, setContacts] = useState(contactsInitial);
   const [reservations, setReservations] = useState(reservationsInitial);
-  const [bookings, setBookings] = useState(bookingsInitial);
+  const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
   //get all posts
   const getPosts = async () => {
@@ -43,7 +43,8 @@ const PostState = (props) => {
     const json = await response.json();
     setLoading(false);
     console.log(json);
-    setBookings(json);
+    setBookings(json.bookeddates);
+    return bookings;
   };
 
   //get all reservations
@@ -162,7 +163,7 @@ const PostState = (props) => {
 
     const bookingss = await response.json();
     setBookings(bookings.concat(bookingss));
-    return bookings;
+    return bookingss;
   };
   const addContact = async (name, email, message) => {
     //API call
