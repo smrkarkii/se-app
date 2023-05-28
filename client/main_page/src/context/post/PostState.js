@@ -7,7 +7,6 @@ const PostState = (props) => {
   const servicesInitial = [];
   const contactsInitial = [];
   const reservationsInitial = [];
-  const bookingsInitial = [];
 
   const [posts, setPosts] = useState(postsInitial);
   const [services, setServices] = useState(servicesInitial);
@@ -201,7 +200,7 @@ const PostState = (props) => {
   //unbook
   const unbookdate = async (id) => {
     //API call
-    const response = await fetch(`${host}/unbook/${id}`, {
+    const response = await fetch(`${host}/unbookdate/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

@@ -3,14 +3,16 @@ import "./style.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import dayjs from "dayjs";
+// import DateTimePicker from "react-datetime-picker";
 import moment from "moment";
 import postContext from "../context/post/postContext";
-// import "react-toastify/dist/ReactToastify.css";
-// toast.configure();
-
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { Stack } from "@mui/material";
 export default function Reservation() {
+  const today = dayjs();
+  const tomorrow = dayjs().add(1, "day");
   const context = useContext(postContext);
   const { reservations, getReservations } = context;
   const Navigate = useNavigate();
@@ -100,6 +102,7 @@ export default function Reservation() {
   };
   return (
     <>
+      {/* <LocalizationProvider dateAdapter={AdapterDayjs}> */}
       {(document.title = "ICTC - Reservation")}
       <div className="pages-bg" style={{ marginTop: "-6rem" }}>
         <div className="bf-container">
@@ -136,17 +139,28 @@ export default function Reservation() {
               </div>
 
               <div className="bf-row">
-                <div className="bf-col-6">
+                <div className="bf-col-12">
                   <p className="p-reservation">Select Date</p>
-                  <DatePicker
+                  {/* <DateTimePicker
                     value={reservation.date}
                     onChange={(date) =>
                       inputHandler({ target: { name: "date", value: date } })
                     }
-                    filterDate={isReserved}
+                    isClockOpen=false
                     minDate={moment().toDate()}
-                    placeholderText={placeholderText()}
-                  />
+                    placeholder="Choose Date"
+                  /> */}
+                  <DemoContainer components={["DateTimePicker"]}>
+                    <DateTimePicker
+                      label="Choose date and time"
+                      disablePast
+                      value={reservation.date}
+                      defaultValue={tomorrow}
+                      onChange={(date) =>
+                        inputHandler({ target: { name: "date", value: date } })
+                      }
+                    />
+                  </DemoContainer>
                   {/* <input
                     className="input"
                     type="date"
@@ -188,6 +202,7 @@ export default function Reservation() {
           </div>
         </div>
       </div>
+      {/* </LocalizationProvider> */}
     </>
   );
 }
