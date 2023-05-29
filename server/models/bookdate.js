@@ -2,7 +2,9 @@ const mongoose = require("mongoose");
 
 const bookdateSchema = new mongoose.Schema({
   date: {
-    type: Date,
+    type: String,
+    unique: true,
+    required: true,
   },
 });
 

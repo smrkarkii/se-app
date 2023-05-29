@@ -9,7 +9,6 @@ import "./customcalendar.css";
 // toast.configure();
 
 export default function ManageCalendar() {
-  let formattedbookeddates;
   const context = useContext(postContext);
   const { bookings, unbookdate, bookDate, getBookedDates } = context;
   const [bookedDates, setBookedDates] = useState([]);
@@ -28,17 +27,25 @@ export default function ManageCalendar() {
   }, [bookings]);
 
   //bookings fetched
-  console.log("bookings.bookedDates", bookings.bookedDates, bookedDates); //bookings fetched
+  console.log("bookings.bookedDates", bookedDates); //bookings fetched
   const isBookedDate = (date) => {
-    formattedbookeddates = bookedDates.map((data) => {
-      let datas = data.date;
-      datas = datas.substring(0, 10);
-      const parts = datas.split("-"); // Split the date into an array of parts
-      const formattedDate = parts.reverse().join("/");
-      console.log("inside isBookedDate", formattedDate);
-      return formattedDate;
+    const foundDate = bookedDates.find((booking) => booking.date === date);
+    if (foundDate) {
+      //already formatted date is sent here
+      return true; //already booked
+    } else {
+      return false; //not booked
+    }
+  };
+  const isBookedDateTile = (date) => {
+    let dates = date.toLocaleDateString("en-GB", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
     });
-    if (formattedbookeddates.includes(date)) {
+    const foundDate = bookedDates.find((booking) => booking.date === dates);
+    if (foundDate) {
+      //already formatted date is sent here
       return true; //already booked
     } else {
       return false; //not booked
@@ -46,12 +53,12 @@ export default function ManageCalendar() {
   };
   function getDateIdByValue(date) {
     for (let booking of bookedDates) {
-      let formattedBookings = booking.date.substring(0, 10);
-      const parts = formattedBookings.split("-"); // Split the date into an array of parts
-      formattedBookings = parts.reverse().join("/");
-      console.log("inside getdate id ", formattedBookings, date, booking._id);
+      // let formattedBookings = booking.date.substring(0, 10);
+      // const parts = formattedBookings.split("-"); // Split the date into an array of parts
+      // formattedBookings = parts.reverse().join("/");
+      console.log("inside getdate id ", booking, date, booking._id);
 
-      if (date === formattedBookings) {
+      if (date === booking.date) {
         return booking._id;
       }
     }
@@ -59,6 +66,7 @@ export default function ManageCalendar() {
   }
 
   const clickDate = async (date) => {
+    console.log("Clicked actual date ", date);
     console.log(
       "clicked",
       date.toLocaleDateString("en-GB", {
@@ -76,7 +84,7 @@ export default function ManageCalendar() {
       console.log("clicked date is not  booked");
       // Date already clicked, remove it from the clickedDates array
 
-      await bookDate(date);
+      await bookDate(formatted);
     } else {
       // console.log(bookedDates.toDateString());
       // console.log(date.toDateString());
@@ -99,14 +107,25 @@ export default function ManageCalendar() {
         <div className="tile-content-wrapper">
           <div className="hoverwrapper">
             <div
-              className={`${isHovered ? "hover-text" : ""}`}
+              className={`calendar-date ${isBookedDate ? "booked" : ""} ${
+                isHovered ? "hovered" : ""
+              }`}
               onMouseEnter={handleHover}
               onMouseLeave={handleMouseLeave}
             >
-              {isHovered && (isBookedDate ? "Unbook-Date" : "Book Date")}
+              {isHovered &&
+                isBookedDate(
+                  <span className="hovered" data-tooltip="Unbook date">
+                    &#10060;
+                  </span>
+                )}
+              {isHovered && (
+                <span className="hovered" data-tooltip="Book date">
+                  &#10004;
+                </span>
+              )}
             </div>
           </div>
-
           <div className="clicked-tile"></div>
         </div>
       );
@@ -115,8 +134,8 @@ export default function ManageCalendar() {
   };
   return (
     <>
-      <div className="Calendar">
-        <h2>Manage your Calendar</h2>
+      <h2>Manage your Calendar</h2>
+      <div className="calendar-container">
         <Calendar
           onClickDay={clickDate}
           tileContent={tileContent}

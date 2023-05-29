@@ -11,11 +11,10 @@ router.get("/bookedDates", async (req, res) => {
 });
 router.post("/bookdate", async (req, res) => {
   try {
-    const { date } = req.body;
-    const modifieddate = new Date(date).toString();
+    // const modifieddate = new Date(date).toString();
     const bookeddate = new Bookdate(req.body);
-    bookeddate.date = modifieddate;
-    console.log("Booking date");
+    // bookeddate.date = modifieddate;
+    console.log("Booking date", bookeddate);
     bookeddate.save().then((result) => {
       res.status(200).json({
         result,
