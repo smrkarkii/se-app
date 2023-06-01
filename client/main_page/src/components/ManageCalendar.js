@@ -24,10 +24,12 @@ export default function ManageCalendar() {
 
   useEffect(() => {
     setBookedDates(bookings);
-  }, [bookings]);
+    getBookedDates();
+  }, [bookings, getBookedDates]);
 
   //bookings fetched
   console.log("bookings.bookedDates", bookedDates); //bookings fetched
+
   const isBookedDate = (date) => {
     const foundDate = bookedDates.find((booking) => booking.date === date);
     if (foundDate) {
@@ -43,6 +45,7 @@ export default function ManageCalendar() {
       month: "2-digit",
       day: "2-digit",
     });
+
     const foundDate = bookedDates.find((booking) => booking.date === dates);
     if (foundDate) {
       //already formatted date is sent here
@@ -96,51 +99,24 @@ export default function ManageCalendar() {
     }
   };
 
-  const tileContent = ({ date, view }) => {
-    const formatted = date.toLocaleDateString("en-GB", {
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-    });
-    if (view === "month") {
-      return (
-        <div className="tile-content-wrapper">
-          <div className="hoverwrapper">
-            <div
-              className={`calendar-date ${isBookedDate ? "booked" : ""} ${
-                isHovered ? "hovered" : ""
-              }`}
-              onMouseEnter={handleHover}
-              onMouseLeave={handleMouseLeave}
-            >
-              {isHovered &&
-                isBookedDate(
-                  <span className="hovered" data-tooltip="Unbook date">
-                    &#10060;
-                  </span>
-                )}
-              {isHovered && (
-                <span className="hovered" data-tooltip="Book date">
-                  &#10004;
-                </span>
-              )}
-            </div>
-          </div>
-          <div className="clicked-tile"></div>
-        </div>
-      );
+  const tileClassName = ({ date }) => {
+    if (isBookedDateTile(date)) {
+      return "booked";
     }
     return null;
   };
   return (
     <>
-      <h2>Manage your Calendar</h2>
-      <div className="calendar-container">
-        <Calendar
-          onClickDay={clickDate}
-          tileContent={tileContent}
-          // formatDay={(locale, date) => dayjs(date).format("YYYY-MM-DD")}
-        />
+      <div className="bf-row">
+        <div className="bf-col-12 manage-container">
+          <div className="calendar-container">
+            <Calendar
+              onClickDay={clickDate}
+              tileClassName={tileClassName}
+              // formatDay={(locale, date) => dayjs(date).format("YYYY-MM-DD")}
+            />
+          </div>
+        </div>
       </div>
     </>
   );

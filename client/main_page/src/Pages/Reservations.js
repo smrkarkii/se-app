@@ -8,13 +8,16 @@ import dayjs from "dayjs";
 import moment from "moment";
 import postContext from "../context/post/postContext";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { Stack } from "@mui/material";
+
 export default function Reservation() {
+  let bookedDatesFinal;
   const today = dayjs();
   const tomorrow = dayjs().add(1, "day");
   const context = useContext(postContext);
-  const { reservations, getReservations } = context;
+  const { reservations, getReservations, getBookedDates, bookings } = context;
   const Navigate = useNavigate();
 
   const [reservation, setReservation] = useState({
@@ -23,10 +26,15 @@ export default function Reservation() {
     date: "",
     message: "",
   });
+  const [bookedDates, setBookedDates] = useState([]);
   useEffect(() => {
     getReservations();
+    getBookedDates();
+    setBookedDates(bookings);
     // eslint-disable-next-line
   }, []);
+
+  console.log(bookedDates);
   const inputHandler = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -42,6 +50,22 @@ export default function Reservation() {
       });
     }
   };
+
+  const isBooked = (date) => {
+    console.log("inside is booked");
+    const formattedDate = date.toLocaleDateString("en-GB", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    });
+    // const dateString = date.toISOString().split("T")[0];
+
+    const dateslist = bookedDates.map((bookings) => {
+      return bookings.date;
+    });
+    return dateslist.includes(formattedDate);
+  };
+  console.log(bookedDatesFinal);
   console.log(reservation);
   const reservePost = async (e) => {
     console.log("reserving");
@@ -151,24 +175,17 @@ export default function Reservation() {
                     placeholder="Choose Date"
                   /> */}
                   <DemoContainer components={["DateTimePicker"]}>
-                    <DateTimePicker
-                      label="Choose date and time"
+                    <DatePicker
+                      label="Choose date"
                       disablePast
                       value={reservation.date}
                       defaultValue={tomorrow}
+                      shouldDisableDate={isBooked}
                       onChange={(date) =>
                         inputHandler({ target: { name: "date", value: date } })
                       }
                     />
                   </DemoContainer>
-                  {/* <input
-                    className="input"
-                    type="date"
-                    name="date"
-                    id="date"
-                    value={reservation.date}
-                    onChange={inputHandler}
-                  /> */}
                 </div>
               </div>
 

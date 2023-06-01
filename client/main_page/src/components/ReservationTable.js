@@ -57,11 +57,8 @@ const ReservationTable = (props) => {
               }}
               className="text"
             >
-              <b>Date Reserved: </b>
-              {new Date(reservation.date)
-                .toString()
-                .split("GMT+0545")[0]
-                .trim()}
+              <b>Date Reserved: (DD/MM/YY) </b>
+              {reservation.date}
             </small>
           </p>
         </div>

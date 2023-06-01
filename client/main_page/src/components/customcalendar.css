@@ -1,8 +1,8 @@
 .react-calendar {
   width: 350px;
   max-width: 100%;
-  background: white;
-  border: 1px solid #a0a096;
+  background: rgb(255, 255, 255);
+  border: 5px solid #032d8e;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.125em;
 }
@@ -65,10 +65,12 @@
   text-transform: uppercase;
   font-weight: bold;
   font-size: 0.75em;
+  color: #032d8e;
 }
 
 .react-calendar__month-view__weekdays__weekday {
   padding: 0.5em;
+  color: #032d8e;
 }
 
 .react-calendar__month-view__weekNumbers .react-calendar__tile {
@@ -77,6 +79,7 @@
   justify-content: center;
   font-size: 0.75em;
   font-weight: bold;
+  color: #032d8e;
 }
 
 .react-calendar__month-view__days__day--weekend {
@@ -99,18 +102,16 @@
   background: none;
   text-align: center;
   line-height: 16px;
+  color: #032d8e;
 }
 
 .react-calendar__tile:disabled {
-  background-color: #575757;
-}
-.react-calendar__tile:isbooked {
-  background-color: #575757;
+  background-color: #b1b1b1;
 }
 
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus {
-  background-color: #e6e6e6;
+  background-color: #fdb8b8;
 }
 
 .react-calendar__tile--now {
@@ -119,7 +120,7 @@
 
 .react-calendar__tile--now:enabled:hover,
 .react-calendar__tile--now:enabled:focus {
-  background: #ffffa9;
+  /* background: #ffffa9; */
 }
 
 .react-calendar__tile--hasActive {
@@ -132,15 +133,40 @@
 }
 
 .react-calendar__tile--active {
-  background: #006edc;
-  color: white;
+  /* color: white; */
 }
 
 .react-calendar__tile--active:enabled:hover,
 .react-calendar__tile--active:enabled:focus {
-  background: #1087ff;
+  /* background: #ffffff; */
 }
 
 .react-calendar--selectRange .react-calendar__tile--hover {
   background-color: #e6e6e6;
+}
+
+.booked {
+  border-color: black;
+  background-color: rgb(
+    237,
+    58,
+    58
+  ); /* Change the color to your desired booked date color */
+}
+.booked:enabled:hover {
+  border-color: black;
+  background-color: rgb(
+    130,
+    199,
+    145
+  ); /* Change the color to your desired booked date color */
+}
+.calendar-container {
+  margin-top: 30px;
+}
+.manage-container {
+  margin: 30px auto;
+}
+.heading {
+  color: white;
 }
