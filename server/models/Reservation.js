@@ -18,8 +18,8 @@ const ReservationsSchema = new Schema({
   },
 
   date: {
-    type: Date,
-    default: Date.now,
+    type: String,
+    required: true,
   },
 });
 module.exports = mongoose.model("reservations", ReservationsSchema);

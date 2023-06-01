@@ -16,8 +16,18 @@ exports.createReservation = async (req, res) => {
     return res.status(422).json({ errors: errors.array() });
   }
   try {
-    const reservation = new Reservation(req.body);
-    console.log("Creating reservation");
+    let reservationData = req.body;
+    const formattedDate = new Date(reservationData.date).toLocaleDateString(
+      "en-GB",
+      {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      }
+    );
+    reservationData.date = formattedDate;
+    console.log("Creating reservation", formattedDate);
+    const reservation = new Reservation(reservationData);
     reservation.save().then((result) => {
       res.status(200).json({
         result,
