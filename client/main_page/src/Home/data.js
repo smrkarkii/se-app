@@ -66,7 +66,7 @@ const team = [
     name: "Basanta Joshi",
     job: "Assistant Professor",
     image:
-      "https://media.licdn.com/dms/image/C5603AQHnJG1u91tJeQ/profile-displayphoto-shrink_400_400/0/1516342058771?e=1681344000&v=beta&t=mRQl_--8rSxVYooz79u-9Lf6YPqensta7ttW_gwP_cM",
+      "https://doece.pcampus.edu.np/wp-content/uploads/2020/05/Basanta-Joshi-213x270.png",
   },
   {
     id: 4,

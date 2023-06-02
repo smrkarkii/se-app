@@ -38,71 +38,67 @@ const AddAdmin = () => {
     };
   return (
     <>
-    <div className="mt-5 mb-5 col-md-4 bg-white text-dark rounded">
-    <form onSubmit={handleSubmit}>
-      <br></br>
-      <div className="mb-3 mx-5">
-        <label htmlFor="name" className="form-label">
-          Full Name
-        </label>
-        <input
-          type="name"
-          className="form-control"
-          id="name"
-          onChange={handleChange}
-          value={credential.name}
-          required
-          minLength={3}
-          name="name"
-          aria-describedby="emailHelp"
-        />
+      <div className="mt-5 mb-5 col-md-4 bg-white text-dark rounded">
+        <form onSubmit={handleSubmit}>
+          <br></br>
+          <div className="mb-3 mx-5">
+            <label htmlFor="name" className="form-label">
+              Full Name
+            </label>
+            <input
+              type="name"
+              className="form-control"
+              id="name"
+              onChange={handleChange}
+              value={credential.name}
+              required
+              minLength={3}
+              name="name"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div className="mb-3 mx-5">
+            <label htmlFor="email" className="form-label">
+              Email address
+            </label>
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              required
+              onChange={handleChange}
+              value={credential.email}
+              name="email"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div className="mb-3 mx-5">
+            <label htmlFor="password" className="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              onChange={handleChange}
+              required
+              minLength={8}
+              className="form-control"
+              value={credential.password}
+              id="password"
+              name="password"
+            />
+          </div>
+          <button
+            className="submit"
+            type="submit"
+            style={{marginLeft : '30%', marginTop: '20px'}}
+          >
+            SIgnUp
+          </button>
+        </form>
+        <br></br>
       </div>
-      <div className="mb-3 mx-5">
-        <label htmlFor="email" className="form-label">
-          Email address
-        </label>
-        <input
-          type="email"
-          className="form-control"
-          id="email"
-          required
-          onChange={handleChange}
-          value={credential.email}
-          name="email"
-          aria-describedby="emailHelp"
-        />
-      </div>
-      <div className="mb-3 mx-5">
-        <label htmlFor="password" className="form-label">
-          Password
-        </label>
-        <input
-          type="password"
-          onChange={handleChange}
-          required
-          minLength={8}
-          className="form-control"
-          value={credential.password}
-          id="password"
-          name="password"
-        />
-      </div>
-      <button
-        style={{
-          backgroundColor: "#00028d",
-          borderRadius: "10px",
-          cursor: "pointer",
-        }}
-        type="submit"
-        className="btn btn-primary mt-2"
-      >
-        SIgnUp
-      </button>
-    </form>
-    <br></br>
-  </div>
-  </>
-  )
+    </>
+  );
 }
 
 export default AddAdmin

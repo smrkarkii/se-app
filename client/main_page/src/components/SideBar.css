@@ -3,7 +3,7 @@
   }
   
   .second-text {
-    color: var(--second-text-color);
+    color: var(--aux-color);
   }
   
   .primary-bg {
@@ -14,22 +14,13 @@
     background-color: var(--second-bg-color);
   }
   
-  .rounded-full {
+  /* .rounded-full {
     border-radius: 100%;
-  }
+  } */
   
   #wrapper {
     overflow-x: hidden;
-    background-image: linear-gradient(
-      to right,
-      #161716,
-      #161716,
-      #161716,
-      #161716,
-      #161716
-      
-      
-    );
+    background-color: var(--extra-aux-color);
   }
   
   #sidebar-wrapper {

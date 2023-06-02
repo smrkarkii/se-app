@@ -134,26 +134,27 @@ export default function PostForm(props) {
             </div>
           </div>
           <div className="row g-3 mb-2">
-            <div className="col" style={{marginTop:"1.7rem"}}>
-            <p style={{marginTop:"2px"}}> Upload an image </p>
-            <ImageUploader dataFromChild={dataFromChild} clicked={clicked}/>
+            <div className="col" style={{ marginTop: "1.7rem" }}>
+              <p style={{ marginTop: "2px" }}> Upload an image </p>
+              <ImageUploader dataFromChild={dataFromChild} clicked={clicked} />
             </div>
-            
-          <div className="col" style={{marginTop:"1.5rem"}}>
-            <label htmlFor="organizer" className="form-label mx-2"  >
-              Organizer
-            </label>
-            <input style={{marginTop:"-1px"}}
-              type="text"
-              onChange={handleChange}
-              minLength={3}
-              required
-              className="form-control"
-              id="organizer"
-              value={post.organizer}
-              name="organizer"
-            />
-          </div>
+
+            <div className="col" style={{ marginTop: "1.5rem" }}>
+              <label htmlFor="organizer" className="form-label mx-2">
+                Organizer
+              </label>
+              <input
+                style={{ marginTop: "-1px" }}
+                type="text"
+                onChange={handleChange}
+                minLength={3}
+                required
+                className="form-control"
+                id="organizer"
+                value={post.organizer}
+                name="organizer"
+              />
+            </div>
           </div>
 
           <div className=" mb-2">
@@ -171,7 +172,6 @@ export default function PostForm(props) {
               rows="3"
             ></textarea>
           </div>
-          
 
           <button
             style={{

@@ -14,7 +14,7 @@
     cursor: pointer;
 }
 nav {
-    background: #00028d;
+    background: var(--main-bg-color);
     overflow: hidden;
     position: fixed;
     top: 0;
@@ -68,7 +68,7 @@ nav {
 
 
 .nav-toggle:hover {
-    color: hsl(205, 29%, 85%);
+    color: var(--main-bg-color);
     transform: rotate(90deg);
 }
 
@@ -79,19 +79,18 @@ nav {
 }
 
 .links a {
-    color: hsl(0, 0%, 100%);
+    color: white;
     font-weight: 400;
     font-size: 1rem;
     text-transform: capitalize;
     letter-spacing:0.1rem;
     display: block;
     padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
     transition: all 0.3s linear;
 }
-
 .links a:hover {
-    background: rgb(226, 245, 255);
-    color: hsl(209, 100%, 50%);
+    color: #05202c;
 }
 
 .social-icons {

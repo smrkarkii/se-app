@@ -72,11 +72,14 @@ export default function PageContent() {
       <div className="d-flex" id="wrapper">
         {show ? <SideBar showAlert={showAlert} /> : null}
         {/* ----------------Page Content Begins--------------- */}
-        <div id="page-content-wrapper">
+        <div
+          id="page-content-wrapper"
+          style={{ backgroundColor: "var(--extra-aux-color)" }}
+        >
           {/* --------------Navbar Begins------------------ */}
           <nav
             className="navbar navbar-expand-lg navbar-light py-4 px-4"
-            style={{ backgroundColor: "#00028d" }}
+            style={{ backgroundColor: "var(--main-bg-color)" }}
           >
             <div className="d-flex align-items-center">
               <i
@@ -172,7 +175,7 @@ export default function PageContent() {
               style={{
                 position: "relative",
                 marginBottom: "1rem",
-                backgroundColor: "black",
+                backgroundColor: "var(--extra-aux-color)",
                 height: "63.5vh",
               }}
             >

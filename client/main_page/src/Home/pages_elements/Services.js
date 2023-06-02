@@ -7,6 +7,8 @@ const Services = () => {
       <section className="services">
         <h4 className="services_title">Our Features</h4>
         <div className="underline"></div>
+        <div className="services-wrapper">
+
         <div className="flex-services">
           {services.map((service) => {
             const { id, title, icon, text } = service;
@@ -18,6 +20,7 @@ const Services = () => {
               </div>
             );
           })}
+        </div>
         </div>
       </section>
     </>

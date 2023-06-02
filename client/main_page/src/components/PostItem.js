@@ -44,7 +44,7 @@ const PostItem = (props) => {
               <p
                 style={{
                   fontSize: "18px",
-                  marginTop: "1rem",
+                  marginTop: "2.5rem",
                   marginLeft: "-0rem",
                 }}
                 className="card-title"

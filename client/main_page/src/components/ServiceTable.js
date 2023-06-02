@@ -18,7 +18,7 @@ export default function ServiceTable(props) {
               <p
                 style={{
                   fontSize: "24px",
-                  marginBottom: "-2.5rem",
+                  marginTop: "1rem",
                   marginLeft: "-0rem",
                 }}
                 className="card-title"
@@ -46,7 +46,7 @@ export default function ServiceTable(props) {
               <p
                 style={{
                   fontSize: "18px",
-                  marginTop: "1rem",
+                  marginTop: "2.5rem",
                   marginLeft: "-0rem",
                 }}
                 className="card-text"
@@ -58,7 +58,7 @@ export default function ServiceTable(props) {
             <div>
               <img
                 src={service.imageUrl}
-                alt="im"
+                alt="image"
                 style={{ height: "250px", width: "320px" }}
               />
             </div>

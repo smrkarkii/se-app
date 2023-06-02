@@ -11,14 +11,12 @@ export default function SideBar() {
     navigate("/admin/login");
   };
   return (
-    <div className="bg-white" id="sidebar-wrapper">
+    <div
+      style={{ backgroundColor: "var(--aux-bg-color)" }}
+      id="sidebar-wrapper"
+    >
       <div className="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
-        <img
-          src={logo}
-          style={{ backgroundColor: "rgb(0, 2, 141)" }}
-          className="logo"
-          alt="logo"
-        />
+        <img src={logo} className="logo" alt="logo" />
       </div>
       <div className="list-group list-group-flush my-3">
         <Link
@@ -50,13 +48,6 @@ export default function SideBar() {
           className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
         >
           <i className="fas fa-solid fa-calendar-check me-2"></i>Reservations
-        </Link>
-        <Link
-          to="/admin/calendar"
-          className="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-        >
-          <i className="fas fa-solid fa-calendar-check me-2"></i>Manage booked
-          date
         </Link>
         <Link
           to="/admin/signup"

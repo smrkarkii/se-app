@@ -23,26 +23,13 @@ export default function Services() {
         <div className="container">
           <div className=" mt-3 d-flex justify-content-between bg-white align-items-center">
             <span
-              style={{
-                backgroundColor: "#00028d",
-                borderRadius: "5px",
-                fontSize: "2rem",
-                color: "white",
-                paddingRight: "1rem",
-                paddingLeft: "1rem",
-                paddingTop: "0.5rem",
-                paddingBottom: "0.5rem",
-              }}
+              style={{ fontSize: "2.5rem", color: "var(--main-text-color)" }}
               className="mx-2 my-2"
             >
               Recent Services{" "}
             </span>
             <Link to="/admin/serviceform">
-              <button
-                style={{ backgroundColor: "#00028d", borderRadius: "10px" }}
-                type="button"
-                className="mx-2 btn btn-primary"
-              >
+              <button type="button" className="submit">
                 Add New <span className="badge bg-success">+</span>
               </button>
             </Link>
