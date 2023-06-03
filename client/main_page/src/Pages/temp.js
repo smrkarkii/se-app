@@ -1,4 +1,3 @@
-import { photos } from "./data";
 import React, { useState } from "react";
 
 const Gallery = () => {
@@ -14,15 +13,7 @@ const Gallery = () => {
 
   return (
     <>
-      <section
-        className="gallery-section"
-        style={{
-          marginTop: "5rem",
-          marginBottom: "2rem",
-          borderRadius: "10px",
-          paddingBottom: "3rem",
-        }}
-      >
+      <section className="gallery-section">
         <h1 className="gallery-header">Gallery</h1>
         <div className="underline"></div>
         <div className="gallery-container">
@@ -33,7 +24,7 @@ const Gallery = () => {
                 <img
                   src={image_path}
                   alt={title}
-                  onClick={() => openOverlay('https://ictc.ioe.edu.np/img/gallery/' + image_path)}
+                  onClick={() => openOverlay(image_path)}
                 />
                 <h2 className="gallery-title">{title}</h2>
               </div>
@@ -41,6 +32,13 @@ const Gallery = () => {
           })}
         </div>
       </section>
+
+      <div
+        className={`overlay ${selectedImage ? "active" : ""}`}
+        onClick={closeOverlay}
+      >
+        <img src={selectedImage} alt="Full Image" />
+      </div>
     </>
   );
 };

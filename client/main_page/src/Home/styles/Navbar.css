@@ -1,7 +1,6 @@
 .nav-header {
     display: flex;
     align-items: center;
-    z-index: 1;
     justify-content: space-between;
 }
 
@@ -20,6 +19,7 @@ nav {
     top: 0;
     width: 100%;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1;
 }
 .sign-up{
     display: none;
@@ -30,6 +30,8 @@ nav {
         margin: auto;
         display: flex;
         align-items: center;
+        position: relative;
+        z-index: 100;
         justify-content: space-between;
         padding: 0.5rem;
     }

@@ -1,18 +1,14 @@
 import React from "react";
-//page elements
+import { Route, Routes } from "react-router-dom";
 import Navbar from "./Home/pages_elements/Navbar";
-import Next from "./Pages/Next";
-
-//Routes
+import Footer from "./Home/pages_elements/Footer";
+import Home from "./Pages/Home";
 import Gallery from "./Pages/Gallery";
 import Events from "./Pages/Events.js";
 import Reservations from "./Pages/Reservations";
 import Contact from "./Pages/contact";
-import Home from "./Pages/Home";
 import Login from "./Pages/Login";
-
-import { Route, Routes } from "react-router-dom";
-import Footer from "./Home/pages_elements/Footer";
+import Next from "./Pages/Next";
 import DetailEvents from "./Pages/DetailEvents";
 import ServicesFront from "./Pages/ServicesFront";
 
@@ -21,15 +17,15 @@ function MainPage() {
     <>
       <Navbar />
       <Routes>
-        <Route exact path="" element={<Home />} />
-        <Route exact path="/gallery" element={<Gallery />} />
-        <Route exact path="/events" element={<Events />} />
-        <Route exact path="/Reservations" element={<Reservations />} />
-        <Route exact path="/contact" element={<Contact />} />
-        <Route exact path="/login" element={<Login />} />
-        <Route exact path="/next" element={<Next />} />
-        <Route path="/empdetails/:id" element={<DetailEvents />}></Route>
-        <Route exact path="/servicefront" element={<ServicesFront />} />
+        <Route path="" element={<Home />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/reservations" element={<Reservations />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/next" element={<Next />} />
+        <Route path="/empdetails/:id" element={<DetailEvents />} />
+        <Route path="/servicefront" element={<ServicesFront />} />
       </Routes>
       <Footer />
     </>
