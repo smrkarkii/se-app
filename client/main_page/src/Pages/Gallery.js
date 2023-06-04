@@ -14,6 +14,7 @@ const Gallery = () => {
 
   return (
     <>
+      {(document.title = "ICTC - Gallery")}
       <section
         className="gallery-section"
         style={{
@@ -33,7 +34,11 @@ const Gallery = () => {
                 <img
                   src={image_path}
                   alt={title}
-                  onClick={() => openOverlay('https://ictc.ioe.edu.np/img/gallery/' + image_path)}
+                  onClick={() =>
+                    openOverlay(
+                      "https://ictc.ioe.edu.np/img/gallery/" + image_path
+                    )
+                  }
                 />
                 <h2 className="gallery-title">{title}</h2>
               </div>

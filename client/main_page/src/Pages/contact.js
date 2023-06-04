@@ -40,57 +40,56 @@ const Contact = () => {
   return (
     <>
       {(document.title = "ICTC - Contact")}
+        <section
+          className="ge-section"
+          style={{ marginTop: "7rem", borderRadius: "20px" }}
+        >
+          <div className="contact-container" style={{ marginTop: "-1rem" }}>
+            <h1 className="ge-header">Contact</h1>
+            <div className="underline"></div>
+            <form method="POST">
+              <label className="con" htmlFor="name">
+                Full Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your full name"
+                onChange={inputHandler}
+                value={cont.name}
+              ></input>
 
-      <section
-        className="ge-section"
-        style={{ marginTop: "7rem", borderRadius: "20px" }}
-      >
-        <div className="contact-container" style={{ marginTop: "-1rem" }}>
-          <h1 className="ge-header">Contact</h1>
-          <div className="underline"></div>
-          <form method="POST">
-            <label className="con" htmlFor="name">
-              Full Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Your full name"
-              onChange={inputHandler}
-              value={cont.name}
-            ></input>
+              <label className="con" htmlFor="email">
+                Email
+              </label>
+              <input
+                type="text"
+                id="email"
+                name="email"
+                placeholder="Your email"
+                onChange={inputHandler}
+                value={cont.email}
+              ></input>
 
-            <label className="con" htmlFor="email">
-              Email
-            </label>
-            <input
-              type="text"
-              id="email"
-              name="email"
-              placeholder="Your email"
-              onChange={inputHandler}
-              value={cont.email}
-            ></input>
+              <label className="con" htmlFor="message">
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Write something.."
+                style={{ height: "100px" }}
+                onChange={inputHandler}
+                value={cont.message}
+              ></textarea>
 
-            <label className="con" htmlFor="message">
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              placeholder="Write something.."
-              style={{ height: "100px" }}
-              onChange={inputHandler}
-              value={cont.message}
-            ></textarea>
-
-            <button className="submit" type="button" onClick={handleClick}>
-              Send Message
-            </button>
-          </form>
-        </div>
-      </section>
+              <button className="submit" type="button" onClick={handleClick}>
+                Send Message
+              </button>
+            </form>
+          </div>
+        </section>
     </>
   );
 };

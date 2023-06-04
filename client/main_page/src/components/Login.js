@@ -52,7 +52,7 @@ const Login = () => {
         <div id="page-content-wrapper">
           <nav
             className="navbar navbar-expand-lg navbar-light py-4 px-4"
-            style={{ backgroundColor: "#00028d" }}
+            style={{ backgroundColor: "var(--main-bg-color)" }}
           >
             <div className="d-flex align-items-center">
               <i

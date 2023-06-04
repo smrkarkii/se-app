@@ -1,11 +1,13 @@
 :root {
     --main-bg-color: rgb(0, 77, 165);
     --main-text-color: #0b445f;
+    /* --main-text-color1: #1db7ff96; */
     --second-bg-color: #2cbcff; /*mostly in buttons*/
     --second-text-color: #ffffff ;
     --aux-color: #7e9daa;
     --aux-bg-color: #f3f3f3;
     --extra-aux-color: #e0f5ff;
+    
 }
 /* palette{#1357a7,#0d5475, #8edbff, #ffffff } */
 /* accepted{#1357a7,} */

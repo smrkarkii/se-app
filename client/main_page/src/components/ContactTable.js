@@ -57,8 +57,8 @@ export default function ContactTable(props) {
               }}
               className="text-muted"
             >
-              <b>Published On: </b>
-              {new Date(contact.date).toGMTString()}
+              <b>Contacted on: </b>
+              {new Date(contact.date).toLocaleDateString()}
             </small>
           </p>
         </div>

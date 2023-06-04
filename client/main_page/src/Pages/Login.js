@@ -54,63 +54,70 @@ const Login = () => {
     }
   };
   return (
-    <div
-      className="pages-bg"
-      style={{ marginTop: "-8rem", marginBottom: "-3rem" }}
-    >
-      <div class="bf-container">
-        <div class="bf-body">
-          <div class="bf-head">
-            <h1 class="h1">Login</h1>
+    <>
+      {(document.title = "ICTC - Login")}
+      <div
+        className="pages-bg"
+        style={{
+          marginTop: "-8rem",
+          marginBottom: "-3rem",
+          backgroundColor: "var(--extra-aux-color)",
+        }}
+      >
+        <div class="bf-container">
+          <div class="bf-body" style={{}}>
+            <div class="bf-head">
+              <h1 class="h1">Login</h1>
+            </div>
+
+            <form
+              method="POST"
+              class="bf-body-box"
+              style={{ marginTop: "-1rem" }}
+            >
+              <div class="bf-row">
+                <div class="bf-col-12">
+                  <p class="p-reservation">Username</p>
+                  <input
+                    class="input"
+                    type="text"
+                    name="username"
+                    id="username"
+                    onChange={inputHandler}
+                    placeholder="Username"
+                    required
+                    value={cred.username}
+                  />
+                </div>
+              </div>
+              <div class="bf-row" style={{ marginTop: "-1rem" }}>
+                <div class="bf-col-12">
+                  <p class="p-reservation">Password</p>
+                  <input
+                    class="input"
+                    type="password"
+                    name="password"
+                    id="password"
+                    onChange={inputHandler}
+                    placeholder="password"
+                    value={cred.password}
+                    required
+                  ></input>
+                </div>
+              </div>
+
+              <div class="bf-row">
+                <div class="bf-col-3">
+                  <button className="submit" type="button" onClick={verifyCred}>
+                    Verify
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
-
-          <form
-            method="POST"
-            class="bf-body-box"
-            style={{ marginTop: "-1rem" }}
-          >
-            <div class="bf-row">
-              <div class="bf-col-12">
-                <p class="p-reservation">Username</p>
-                <input
-                  class="input"
-                  type="text"
-                  name="username"
-                  id="username"
-                  onChange={inputHandler}
-                  placeholder="Username"
-                  required
-                  value={cred.username}
-                />
-              </div>
-            </div>
-            <div class="bf-row" style={{ marginTop: "-1rem" }}>
-              <div class="bf-col-12">
-                <p class="p-reservation">Password</p>
-                <input
-                  class="input"
-                  type="password"
-                  name="password"
-                  id="password"
-                  onChange={inputHandler}
-                  placeholder="password"
-                  value={cred.password}
-                  required
-                ></input>
-              </div>
-            </div>
-
-            <div class="bf-row">
-              <div class="bf-col-3">
-                <button className="submit" type="button" onClick={verifyCred}>
-                  Verify
-                </button>
-              </div>
-            </div>
-          </form>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

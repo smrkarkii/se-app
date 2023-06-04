@@ -91,7 +91,8 @@ export default function Reservation() {
       });
     }
     if (resJson.result) {
-      toast.success("Reservation Successful");
+      toast.success("Reservation Successful!");
+      toast.info("You will be mailed credentials to confirm your booking.");
       Navigate("/login");
     }
   };
@@ -128,7 +129,13 @@ export default function Reservation() {
     <>
       {/* <LocalizationProvider dateAdapter={AdapterDayjs}> */}
       {(document.title = "ICTC - Reservation")}
-      <div className="pages-bg" style={{ marginTop: "-6rem" }}>
+      <div
+        className="pages-bg"
+        style={{
+          marginTop: "-6rem",
+          backgroundColor: "var(--extra-aux-color)",
+        }}
+      >
         <div className="bf-container">
           <div className="bf-body">
             <div className="bf-head" style={{ marginBottom: "-2rem" }}>
@@ -176,9 +183,9 @@ export default function Reservation() {
                   /> */}
                   <DemoContainer components={["DateTimePicker"]}>
                     <DatePicker
-                      label="Choose date"
+                      label="Check calendar to find available dates"
                       disablePast
-                      value={reservation.date}
+                      value={reservation.date || null}
                       defaultValue={tomorrow}
                       shouldDisableDate={isBooked}
                       onChange={(date) =>

@@ -13,16 +13,15 @@ const Footer = () => {
             <h4 className="topics" style={{ color: "white" }}>
               Contact Info
             </h4>
-            <p className="elements">+977 01 55247490</p>
-            <p className="elements">ictc@ioe.edu.np</p>
+            <div className='elements_wrapper'>
+              <p className="elements">+977-0155247490</p>
+              <p className="elements">ictc@ioe.edu.np</p>
+            </div>
           </div>
         </div>
 
         <div>
-          <p
-            className="Copyright"
-            style={{ margin: "0", textAlign: "center" }}
-          >
+          <p className="Copyright" style={{ margin: "0", textAlign: "center" }}>
             Copyright © 2021 - ICTC, IOE
           </p>
         </div>

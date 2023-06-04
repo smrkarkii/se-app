@@ -16,7 +16,7 @@ const ServicesFront = () => {
 
   return (
     <>
-      {(document.title = "ICTC - Events")}
+      {(document.title = "ICTC - Services")}
       <section
         className="ge-section"
         style={{
