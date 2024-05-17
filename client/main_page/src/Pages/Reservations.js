@@ -12,7 +12,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { Stack } from "@mui/material";
 
-const apiUrl = "https://se-app-one.vercel.app/";
+const apiUrl = "https://se-app-one.vercel.app";
 
 export default function Reservation() {
   let bookedDatesFinal;

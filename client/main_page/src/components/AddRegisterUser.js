@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const apiUrl = "https://se-app-one.vercel.app/";
+const apiUrl = "https://se-app-one.vercel.app";
 
 const AddRegisterUser = () => {
   const [credential, setCredential] = useState({ username: "", password: "" });

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SideBar from "./SideBar";
 
-const apiUrl = "https://se-app-one.vercel.app/";
+const apiUrl = "https://se-app-one.vercel.app";
 
 const Login = () => {
   const [credential, setCredential] = useState({ email: "", password: "" });
