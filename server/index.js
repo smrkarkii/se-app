@@ -16,7 +16,7 @@ app.use(express.json());
 
 // CORS configuration
 const corsOptions = {
-  origin: "https://ictc-frontend.vercel.app", // Replace with your frontend URL
+  origin: "https://ictc-frontend.vercel.app/", // Replace with your frontend URL
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
