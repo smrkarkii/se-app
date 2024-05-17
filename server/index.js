@@ -14,7 +14,12 @@ const booked_routes = require("./routes/bookedDates");
 var cors = require("cors");
 app.use(express.json());
 
-app.use(cors());
+// CORS configuration
+const corsOptions = {
+  origin: "https://ictc-frontend.vercel.app", // Replace with your frontend URL
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 //body-parser
 
 mongoose.connect(process.env.MONGO_DB).then(() => {
