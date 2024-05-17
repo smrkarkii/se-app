@@ -9,16 +9,19 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`http://localhost:8000/users/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: credential.email,
-        password: credential.password,
-      }),
-    });
+    const response = await fetch(
+      `https://ictc-website-delta.vercel.app/users/login`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: credential.email,
+          password: credential.password,
+        }),
+      }
+    );
     const json = await response.json();
     console.log(json);
     if (json.success) {

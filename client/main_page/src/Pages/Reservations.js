@@ -71,18 +71,21 @@ export default function Reservation() {
     console.log("reserving");
     e.preventDefault();
     let { name, email, date, message } = reservation;
-    let res = await fetch("http://localhost:8000/reservations/new", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        message,
-        date,
-      }),
-    });
+    let res = await fetch(
+      "https://ictc-website-delta.vercel.app/reservations/new",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+          date,
+        }),
+      }
+    );
     let resJson = await res.json();
 
     if (resJson.errors && resJson.errors.length > 0) {
