@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+const apiUrl = "https://se-app-one.vercel.app/";
 
 const AddRegisterUser = () => {
   const [credential, setCredential] = useState({ username: "", password: "" });
@@ -8,19 +9,16 @@ const AddRegisterUser = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(
-      `https://ictc-website-delta.vercel.app/credentials/new`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: credential.username,
-          password: credential.password,
-        }),
-      }
-    );
+    const response = await fetch(`${apiUrl}/credentials/new`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: credential.username,
+        password: credential.password,
+      }),
+    });
     const json = await response.json();
     console.log(json);
     if (json.authToken) {

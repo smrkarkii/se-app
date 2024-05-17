@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PostContext from "./postContext";
 
 const PostState = (props) => {
-  const host = "https://ictc-website-delta.vercel.app";
+  const host = "https://se-app-one.vercel.app/";
   const postsInitial = [];
   const servicesInitial = [];
   const contactsInitial = [];

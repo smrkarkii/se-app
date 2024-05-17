@@ -35,7 +35,7 @@ app.use("/", booked_routes);
 
 //database connecting to mongo db
 
-app.listen(8000, () => {
-  console.log("Running");
-  console.log("admin Running at /admin");
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

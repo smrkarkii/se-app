@@ -12,6 +12,8 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { Stack } from "@mui/material";
 
+const apiUrl = "https://se-app-one.vercel.app/";
+
 export default function Reservation() {
   let bookedDatesFinal;
   const today = dayjs();
@@ -71,21 +73,18 @@ export default function Reservation() {
     console.log("reserving");
     e.preventDefault();
     let { name, email, date, message } = reservation;
-    let res = await fetch(
-      "https://ictc-website-delta.vercel.app/reservations/new",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          message,
-          date,
-        }),
-      }
-    );
+    let res = await fetch(`${apiUrl}/reservations/new`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        message,
+        date,
+      }),
+    });
     let resJson = await res.json();
 
     if (resJson.errors && resJson.errors.length > 0) {
