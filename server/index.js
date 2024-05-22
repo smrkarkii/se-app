@@ -27,6 +27,7 @@ mongoose.connect(process.env.MONGO_DB).then(() => {
 });
 
 app.use(bodyParser.json());
+app.get("/", (req, res) => res.send("Express on Vercel"));
 
 //routing
 app.use("/", event_routes);
@@ -44,3 +45,5 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+module.exports = app;
